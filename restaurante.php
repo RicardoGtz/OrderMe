@@ -14,7 +14,7 @@
 ?>
 <body>
 	<?php
-	include('connectmysql.php');
+    include('connectmysql.php');
 		$sqldata= mysqli_query($dbcon,"call VerRestaurante()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
