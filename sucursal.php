@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ciudad - Administrador</title>
-	<?php include('includes/links.php'); ?>
+	<title>Restaurante - Administrador</title>
+  <?php include('includes/links.php'); ?>
 </head>
 <?php
   error_reporting(0);
   include('connectmysql.php');
   if(isset($_GET['delete_id']))//Si esta puesto el get entonces se ejecuta, dice delete id pero realmente puede llevar cualquier valor, solo es renombrar la variable abajo en el boton
   {
-    $ciu=$_GET['delete_id'];//le doy el valor de los GET a variables ya que si lo hacia directo habia problemas con las comillas (cosas raras),
-    $pro=$_GET['provinc'];
-    $sql_query="call EliminarCiudad('$ciu','$pro')";
+    $suc=$_GET['delete_id'];//le doy el valor de los GET a variables ya que si lo hacia directo habia problemas con las comillas (cosas raras),
+    $sql_query="call EliminarSucursal('$suc')";
     $r= @mysqli_query($dbcon,$sql_query);
-    header("Location: ciudad.php");
+    header("Location: sucursal.php");
   }
 ?>
 <?php
@@ -36,8 +35,12 @@
     <table class="table table-striped">
         <thead>
           <tr>
+            <th>Sucursal</th>
             <th>Nombre</th>
-            <th>Provincia</th>
+            <th>Ciudad/Estado</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Restaurante</th>
             <?php
             if (@$_SESSION['user'] == 'administradorG'){
               echo "<th>Editar</th>";
@@ -49,18 +52,28 @@
         <tbody>
           <?php
             include('connectmysql.php');
-
-            $sqldata= mysqli_query($dbcon,"call VerCiudad()");
+            if($_SESSION['user']=='administradorG')
+              $sqldata= mysqli_query($dbcon,"call VerSucursal()");
+            if($_SESSION['user']=='administradorL')
+              $sqldata= mysqli_query($dbcon,"call VerSucursal()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
               echo "<tr><td>";
               echo utf8_encode($row[0]);
               echo "</td><td>";
               echo utf8_encode($row[1]);
+              echo "</td><td>";
+              echo utf8_encode($row[2]).', '.utf8_encode($row[3]);
+              echo "</td><td>";
+              echo utf8_encode($row[4]);
+              echo "</td><td>";
+              echo utf8_encode($row[7]);
+              echo "</td><td>";
+              echo utf8_encode($row[8]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='ciuinsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
-                echo "<td><a href='ciudad.php?delete_id=$row[0]&provinc=$row[1]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
+                echo "<td><a href='sucinsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='sucursal.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }
             }

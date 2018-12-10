@@ -2,11 +2,7 @@
 <html lang="es">
 <head>
     <title>Sucursales - OrderMe</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="comun/librerias/bootstrap/css/bootstrap.css">
-  	<link rel="stylesheet" href="comun/css/estilo.css">
-	<script src="comun/librerias/bootstrap/js/bootstrap.js"></script>
-	<link rel="stylesheet" href="comun/css/estilos.css" />
+    <?php include('includes/links.php'); ?>
 </head>
 <?php
 	include('includes/global.php');

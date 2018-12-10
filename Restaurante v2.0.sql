@@ -11,7 +11,7 @@ create table Ciudad(
 create table Restaurante(
 	id_restaurante varchar(7),
     nombre varchar(40) not null,
-    constraint pk_restaurante primary key (id_restaurante)    
+    constraint pk_restaurante primary key (id_restaurante)
 );
 
 create table Sucursal(
@@ -131,44 +131,44 @@ insert into Restaurante (id_restaurante, nombre) values ("res0001","Church Chick
                                                         ("res0004","Ke-Alitas"),
                                                         ("res0005","Carls Jr.");
 -- Insertar Sucursales
-insert into Sucursal (id_sucursal, nombre, ciudad, estado, direccion, h_apertura, h_cierre, telefono, id_restaurante) values 
+insert into Sucursal (id_sucursal, nombre, ciudad, estado, direccion, h_apertura, h_cierre, telefono, id_restaurante) values
 			("suc0001","Av. Las Americas","Tampico","Tamaulipas","Avenida Las Americas 402","7:00","21:00","1234567","res0001"),
             ("suc0002","Petrolera","Tampico","Tamaulipas","Fermentum 2255","7:00","21:00","3488179","res0001"),
             ("suc0003","Cañada","Ciudad Madero","Tamaulipas","Velit 5399","7:00","21:00","7017196","res0001"),
-            
+
             ("suc0004","Av. Hidalgo","Altamira","Tamaulipas","Avenida Hidalgo 1227","7:00","21:00","2219188","res0002"),
             ("suc0005","Flamboyanes","Ciudad Madero","Tamaulipas","Flamboyanes 6544","7:00","21:00","1728503","res0002"),
             ("suc0006","Plaza Galerias","Merida","Yucatan","Independencia 3575","7:00","21:00","4770905","res0002"),
-            
+
             ("suc0007","Miramar","Tampico","Tamaulipas","Miguel Hidalgo 5432","7:00","21:00","8588348","res0003"),
             ("suc0008","Av. Rodolfo Torres","Monterrey","Nuevo Leon","Avenida Rodolfo Torres 5132","7:00","21:00","3116214","res0003"),
             ("suc0009","Av. Francisco I. Madero","Hermosillo","Sonora","Avenida Francisco I. Madero 8765","7:00","21:00","4651358","res0003"),
-            
+
             ("suc0010","Plaza Torreon","Monterrey","Nuevo Leon","Convallis 2564","7:00","21:00","5221652","res0004"),
             ("suc0011","Macro Plaza","Saltillo","Coahuila","Avenida Aurelio Hernandez 6542","7:00","21:00","5648415","res0004"),
             ("suc0012","Col. Nautica","Guadalajara","Jalisco","Venustiano Carranza 3291","7:00","21:00","1968525","res0004"),
-            
+
             ("suc0013","Saltillo Centro","Saltillo","Coahuila","Pino Suarez 8762","7:00","21:00","1749374","res0005"),
             ("suc0014","Monterrey Centro","Monterrey","Nuevo Leon","Reforma 3426","7:00","21:00","6268285","res0005"),
             ("suc0015","Merida Centro","Merida","Yucatan","Aldama 5348","7:00","21:00","4984198","res0005");
 
-insert into Platillo (id_platillo, nombre, descripcion, precio, fotografia) values 
+insert into Platillo (id_platillo, nombre, descripcion, precio, fotografia) values
 			("pla0001","Paquete 14 Fajitas","Plaquete de 14 fajitas de pollo",169.50,"14fajitas.jpg"),
             ("pla0002","Paquete 10 Piezas","Plaquete de 10 piezas de pollo",140.00,"10pollo.jpg"),
             ("pla0003","Hamburguesa de Pollo","Deliciosa hamburguesa de pollo empanizado",89.90,"hamburguesapollo.jpg"),
-            
+
             ("pla0004","Pizza de Peperonni","Pizza clasica de Peperonni con queso mozarella",79.90,"pizzapeperonni.jpg"),
             ("pla0005","Pizza Hawaiana","Pizza cubiera con piña, jamon y queso mozarella",139.00,"pizzahawaiana.jpg"),
             ("pla0006","Paquete Fiesta","2 Pizzas de Peperonni, palillos de ajo y refreso de 2 lts.",180.00,"paquetefiesta.jpg"),
-            
+
             ("pla0007","Crepa New York","Crepa dulce con fresas, platano y queso crema",120.00,"crepaNW.jpg"),
             ("pla0008","Omelette California","Omelette de huevo batido con queso, jamon, pimientos y cebolla",120.00,"omeletteCalifornia.jpg"),
             ("pla0009","Hot Cakes IHOP","Hot Cakes naturales con mantequilla",69.90,"hotcakesIHOP.jpg"),
-            
+
             ("pla0010","Litro de Alitas","Litro de Alitas de pollo y verduras, salsa a escoger",100.00,"litroalitas.jpg"),
             ("pla0011","Litro de Boneless","Litro de Boneless de pollo y verduras, salsa a escoger",100.00,"litroboneless.jpg"),
             ("pla0012","Paquete Estudiante","Litro de Boneless o Alitas, verdura y una orden de papas",150.00,"paqueteestudiante.jpg"),
-            
+
             ("pla0013","Hamburguesa Carls","Hamburguesa de Res con queso, lechuga, tomate y cebolla",99.00,"hamburguesacarls.jpg"),
             ("pla0014","Hamburguesa Portobello","Hamburguesa de Res con queso manchego, champiñones, verdura y salsa secreta",169.50,"hamburguesaportobello.jpg"),
             ("pla0015","Hamburguesa Western Baccon","Hamburguesa de Res con queso amarillo, aros de cebolla, tocino y salsa de chipotle",169.50,"hamburguesawesternb.jpg");
@@ -180,7 +180,7 @@ insert into Tiene (id_platillo, id_sucursal) values ("pla0001","suc0001"),
                                                     ("pla0002","suc0002"),
                                                     ("pla0002","suc0003"),
                                                     ("pla0003","suc0003"),
-                                                    
+
                                                     ("pla0004","suc0004"),
                                                     ("pla0004","suc0005"),
                                                     ("pla0004","suc0006"),
@@ -188,7 +188,7 @@ insert into Tiene (id_platillo, id_sucursal) values ("pla0001","suc0001"),
                                                     ("pla0005","suc0005"),
                                                     ("pla0005","suc0006"),
                                                     ("pla0006","suc0006"),
-                                                    
+
                                                     ("pla0007","suc0007"),
                                                     ("pla0007","suc0008"),
                                                     ("pla0007","suc0009"),
@@ -196,7 +196,7 @@ insert into Tiene (id_platillo, id_sucursal) values ("pla0001","suc0001"),
                                                     ("pla0008","suc0008"),
                                                     ("pla0008","suc0009"),
                                                     ("pla0009","suc0009"),
-                                                    
+
                                                     ("pla0010","suc0010"),
                                                     ("pla0010","suc0011"),
                                                     ("pla0010","suc0012"),
@@ -204,7 +204,7 @@ insert into Tiene (id_platillo, id_sucursal) values ("pla0001","suc0001"),
                                                     ("pla0011","suc0011"),
                                                     ("pla0011","suc0012"),
                                                     ("pla0012","suc0012"),
-                                                    
+
                                                     ("pla0013","suc0013"),
                                                     ("pla0013","suc0014"),
                                                     ("pla0013","suc0015"),
@@ -213,35 +213,35 @@ insert into Tiene (id_platillo, id_sucursal) values ("pla0001","suc0001"),
                                                     ("pla0014","suc0015"),
                                                     ("pla0015","suc0015");
 
-insert into Empleado (id_empleado, nombre, contrasena, correo, telefono, id_sucursal) values 
+insert into Empleado (id_empleado, nombre, contrasena, correo, telefono, id_sucursal) values
 			("emp0001","Cain Mckee","contrasena","empleado0001@gmail.com","5463218","suc0001"),
             ("emp0002","Aquila Reed","contrasena","empleado0002@gmail.com","2132896","suc0001"),
             ("emp0003","Hector Solomon","contrasena","empleado0003@gmail.com","5128634","suc0002"),
             ("emp0004","Ongo Gaboglian","contrasena","empleado0004@gmail.com","5437845","suc0002"),
             ("emp0005","Martin Banks","contrasena","empleado0005@gmail.com","3218904","suc0003"),
             ("emp0006","Emery Dawson","contrasena","empleado0006@gmail.com","3429063","suc0003"),
-            
+
             ("emp0007","Mantis Tobogan","contrasena","empleado0007@gmail.com","1290458","suc0004"),
             ("emp0008","Josiah Powell","contrasena","empleado0008@gmail.com","9034559","suc0004"),
             ("emp0009","Addison Fleming","contrasena","empleado0009@gmail.com","6578129","suc0005"),
             ("emp0010","Darius Anthony","contrasena","empleado0010@gmail.com","3217985","suc0005"),
             ("emp0011","Simon Brock","contrasena","empleado0011@gmail.com","2116213","suc0006"),
             ("emp0012","Elvis Teck","contrasena","empleado0012@gmail.com","9023484","suc0006"),
-            
+
             ("emp0013","Nathaniel Howe","contrasena","empleado0013@gmail.com","5642876","suc0007"),
             ("emp0014","Curran Mcpherson","contrasena","empleado0014@gmail.com","3548672","suc0007"),
             ("emp0015","Steven Kelly","contrasena","empleado0015@gmail.com","1325497","suc0008"),
             ("emp0016","Kadeem Kennedy","contrasena","empleado0016@gmail.com","5237693","suc0008"),
             ("emp0017","Jose Elliott","contrasena","empleado0017@gmail.com","6758045","suc0009"),
             ("emp0018","Calvin Campbell","contrasena","empleado0018@gmail.com","2356799","suc0009"),
-            
+
             ("emp0019","William Marshall","contrasena","empleado0019@gmail.com","2315685","suc0010"),
             ("emp0020","Cole Horton","contrasena","empleado0020@gmail.com","6445824","suc0010"),
             ("emp0021","Karen Garcia","contrasena","empleado0021@gmail.com","3425672","suc0011"),
             ("emp0022","Leslie Briones","contrasena","empleado0022@gmail.com","3425867","suc0011"),
             ("emp0023","Kevin Villanueva","contrasena","empleado0023@gmail.com","6873540","suc0012"),
             ("emp0024","Grecia Cruz","contrasena","empleado0024@gmail.com","5348792","suc0012"),
-            
+
             ("emp0025","Victor Godinez","contrasena","empleado0025@gmail.com","3452879","suc0013"),
             ("emp0026","Manuel Hernandez","contrasena","empleado0026@gmail.com","5364870","suc0013"),
             ("emp0027","Jose Bronco","contrasena","empleado0027@gmail.com","2342890","suc0014"),
@@ -249,25 +249,25 @@ insert into Empleado (id_empleado, nombre, contrasena, correo, telefono, id_sucu
             ("emp0029","Marco Fernandez","contrasena","empleado0029@gmail.com","3687249","suc0015"),
             ("emp0030","Carlos Castillo","contrasena","empleado0030@gmail.com","3214564","suc0015");
 
-insert into Usuario (id_usuario, nombre, correo, contrasena, telefono, num_tarjeta, mes_vencimiento, anio_vencimiento, cvv, titular) values 
+insert into Usuario (id_usuario, nombre, correo, contrasena, telefono, num_tarjeta, mes_vencimiento, anio_vencimiento, cvv, titular) values
 			("usu0001","Arthur Clemente","usuario0001@gmail.com","contrasena","3218946","4027664103568942","12","22","452","Arhur Clemente"),
             ("usu0002","Maria Acosta","usuario0002@gmail.com","contrasena","9551235","4027664178451206","10","20","367","Maria Acosta"),
             ("usu0003","Andrea Azua","usuario0003@gmail.com","contrasena","7556541","4027664114401598","08","21","794","Andrea Azua"),
             ("usu0004","Brigitte Fuentes","usuario0004@gmail.com","contrasena","3567842","4027664131024895","11","22","169","Brigitte Fuentes"),
             ("usu0005","Carlos Ottino","usuario0005@gmail.com","contrasena","6941258","4027664114963572","09","20","157","Carlos Ottino");
 
-insert into Administrador (usuario, contrasena, correo, id_restaurante, telefono) values 
+insert into Administrador (usuario, contrasena, correo, id_restaurante, telefono) values
 			("adm0001","root0001","alanzamora@gmail.com","res0001","4598631"),
             ("adm0002","root0002","anacavazos@gmail.com","res0002","2134874"),
             ("adm0003","root0003","ricardogtz@gmail.com","res0003","8754120"),
             ("adm0004","root0004","josemiguel@gmail.com","res0004","1598364"),
             ("adm0005","root0005","andresgraciano@gmail.com","res0005","4024581");
 
-insert into Orden (id_orden, id_sucursal, fecha, num_mesa, total, estatus, id_usuario) values 
+insert into Orden (id_orden, id_sucursal, fecha, num_mesa, total, estatus, id_usuario) values
             ("ord0001","suc0006","2018-04-25","9",169.50,"Aprobada","usu0001"),
             ("ord0002","suc0005","2018-04-26","9",70.50,"Aprobada","usu0001");
 
-insert into Pedido (id_orden, id_platillo, nota, estatus) values 
+insert into Pedido (id_orden, id_platillo, nota, estatus) values
             ("ord0001","pla0004","Sin mucho picante","Aprobada"),
             ("ord0001","pla0005","Sin mucho cinco","Aprobada");
 
@@ -302,7 +302,7 @@ delimiter $$
 create procedure VerCiudad()
 begin
  	Select * from Ciudad
-    order by pronvincia;
+    order by pronvincia asc;
 end$$
 
 -- call VerRestaurante();
@@ -323,7 +323,7 @@ end$$
 delimiter $$
 create procedure VerSucursalRestaurante(in restaurante varchar(7))
 begin
-  	Select * 
+  	Select *
   	from Sucursal
   	where id_restaurante=restaurante
   	Order by nombre;
@@ -333,7 +333,7 @@ end$$
 delimiter $$
 create procedure VerSucursalEspecifica(in sucursal varchar(7))
 begin
-  	Select nombre, ciudad, estado, direccion, estado, h_apertura, h_cierre, telefono 
+  	Select nombre, ciudad, estado, direccion, estado, h_apertura, h_cierre, telefono
   	from Sucursal
   	where id_sucursal=sucursal;
 end$$
@@ -408,7 +408,7 @@ end$$
 delimiter $$
 create procedure VerResena()
 begin
-  	Select Platillo.nombre, Usuario.nombre, calificacion, comentario 
+  	Select Platillo.nombre, Usuario.nombre, calificacion, comentario
   	from Platillo join Usuario join Resena
   	on Resena.id_platillo=Platillo.id_platillo and Resena.id_usuario=Usuario.id_usuario
   	Order by Platillo.nombre;
@@ -418,7 +418,7 @@ end$$
 delimiter $$
 create procedure VerResenaPlatillo(in platillo varchar(7))
 begin
-  	Select Platillo.nombre as platillo, Usuario.nombre as usuario, calificacion, comentario 
+  	Select Platillo.nombre as platillo, Usuario.nombre as usuario, calificacion, comentario
   	from Platillo join Usuario join Resena
   	on Resena.id_platillo=Platillo.id_platillo and Resena.id_usuario=Usuario.id_usuario and Resena.id_platillo=platillo
   	Order by Platillo.nombre;
@@ -428,7 +428,7 @@ end$$
 delimiter $$
 create procedure VerResenaEspecifica(in platillo varchar(7), usuario varchar(7))
 begin
-  	Select Platillo.nombre as platillo, Usuario.nombre as usuario, calificacion, comentario 
+  	Select Platillo.nombre as platillo, Usuario.nombre as usuario, calificacion, comentario
   	from Platillo join Usuario join Resena
   	on Resena.id_platillo=Platillo.id_platillo and Resena.id_usuario=Usuario.id_usuario and Resena.id_platillo=platillo and Resena.id_usuario=usuario
   	Order by Platillo.nombre;
@@ -454,7 +454,7 @@ end$$
 delimiter $$
 create procedure VerOrdenUsuario(in usuario varchar(7))
 begin
-  	Select Orden.id_orden, Orden.id_sucursal, Sucursal.nombre, Orden.fecha, Orden.num_mesa, Orden.total, Orden.estatus 
+  	Select Orden.id_orden, Orden.id_sucursal, Sucursal.nombre, Orden.fecha, Orden.num_mesa, Orden.total, Orden.estatus
     from Orden join Sucursal
     on Orden.id_sucursal=Sucursal.id_sucursal and Orden.id_usuario=usuario
   	Order by fecha;
@@ -612,7 +612,7 @@ end$$
 
 -- drop function InsertarSucursal;
 delimiter $$
-create function InsertarSucursal(sucursal varchar(7), nombreS varchar(40), ciudadS varchar(40), estadoS varchar(40), 
+create function InsertarSucursal(sucursal varchar(7), nombreS varchar(40), ciudadS varchar(40), estadoS varchar(40),
 				direccionS varchar(40), aperturaS varchar(10), cierreS varchar(10), telefonoS varchar(10), restaurante varchar(7)) returns varchar(4)
 begin
 	declare respuesta varchar(4);
@@ -673,7 +673,7 @@ end$$
 -- drop function InsertarEmpleado
 -- select InsertarEmpleado("emp1236","Alan Zamora Barrera","contra1234","alanzamora@gmail.com","8331234567","res1235");
 delimiter $$
-create function InsertarEmpleado(emp varchar(7), nombreE varchar(40), contra varchar(10), correoE varchar(40), telefonoE varchar(10), sucurE varchar(7)) 
+create function InsertarEmpleado(emp varchar(7), nombreE varchar(40), contra varchar(10), correoE varchar(40), telefonoE varchar(10), sucurE varchar(7))
 								returns varchar(4)
 begin
 	declare respuesta varchar(4);
@@ -799,14 +799,14 @@ begin
 end$$
 
 -- ============================================= Son todos los Update (Estan por orden) =============================================
--- 
+--
 
 delimiter $$
 create function ActualizarCiudad(nombreCd varchar(40), nomProvincia varchar(40), nombreAct varchar(40), provinciaAct varchar(40)) returns varchar(4)
 begin
   	declare respuesta varchar(4);
   	if exists(select * from Ciudad where Ciudad.nombre=nombreCd and Ciudad.provincia=nomProvincia) then
-  		if((nombreCd=nombreAct and nomProvincia=provinciaAct) 
+  		if((nombreCd=nombreAct and nomProvincia=provinciaAct)
   			or not exists(select * from Ciudad where Ciudad.nombre=nombreAct and Ciudad.provincia=provinciaAct)) then
   			update Ciudad set Ciudad.nombre=nombreAct,
   							  Ciudad.provincia=provinciaAct
@@ -821,7 +821,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarRestaurante(restaurante varchar(7), restAct varchar(7), nombreAct varchar(40)) returns varchar(4)
 begin
@@ -841,7 +841,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarSucursal(sucur varchar(7), sucurAct varchar(7), nombreAct varchar(40), ciudadAct varchar(40), provinciaAct varchar(40),
 								   direccionAct varchar(40), aperturaAct varchar(10), cierreAct varchar(10), telefonoAct varchar(10),
@@ -870,7 +870,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarPlatillo(platillo varchar(7), platiAct varchar(7), nombreAct varchar(40), descripAct varchar(200),
 								   precioAct float(5,2), fotoAct varchar(40)) returns varchar(4)
@@ -894,7 +894,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarTiene(platillo varchar(7), sucursal varchar(7), platiAct varchar(7), sucurAct varchar(7)) returns varchar(4)
 begin
@@ -912,7 +912,7 @@ begin
   				end if;
   			else
   				set respuesta=3; -- No existe ese Platillo
-			end if;		  			
+			end if;
   		else
   			set respuesta=4; -- La PK actualizada ya existe
   		end if;
@@ -924,7 +924,7 @@ end$$
 
 -- drop function ActualizarEmpleado
 delimiter $$
-create function ActualizarEmpleado(empleado varchar(7), empleadoAct varchar(7), nombreAct varchar(40), contraAct varchar(10), correoAct varchar(40), 
+create function ActualizarEmpleado(empleado varchar(7), empleadoAct varchar(7), nombreAct varchar(40), contraAct varchar(10), correoAct varchar(40),
 								   telefonoAct varchar(10), sucurAct varchar(7)) returns varchar(4)
 begin
   	declare respuesta varchar(4);
@@ -951,7 +951,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarUsuario(usuario varchar(7), usuarioAct varchar(7), nombreAct varchar(40), correoAct varchar(40),
 								  contraAct varchar(10), telefonoAct varchar(10), tarjetaAct varchar(16), mesAct int(2), anioAct int(2),
@@ -981,7 +981,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarResena(platillo varchar(7), usuario varchar(7), platiAct varchar(7), usuarioAct varchar(7),
 								 califAct varchar(1), comentAct varchar(200)) returns varchar(4)
@@ -1046,7 +1046,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarPedido(orden varchar(7), platillo varchar(7), ordenAct varchar(7), platiAct varchar(7),
 								 notaAct varchar(200), estatusAct varchar(20)) returns varchar(4)
@@ -1077,7 +1077,7 @@ begin
     return respuesta;
 end$$
 
--- 
+--
 delimiter $$
 create function ActualizarAdministrador(usuario varchar(7), usuarioAct varchar(7), contraAct varchar(10), correoAct varchar(40),
 										restAct varchar(7), telefonoAct varchar(10)) returns varchar(4)

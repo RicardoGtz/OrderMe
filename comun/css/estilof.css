@@ -171,36 +171,42 @@ tbody{
 
 }
 
-body {
-	font: 100% sans-serif;
-	font-size: 1.0625em;
-}
-
-p {	width: 80%;	}
-
-.tabla {
-	width: 38em;
+/*table {
 	border-collapse: collapse;
-	box-shadow: 3px 3px 7px #336699;
+	box-shadow: 3px 3px 7px #055584;
+}
+
+td,
+th {
 	font-size: .8125em;
-	text-align: left;
+	border: 1px solid #000;
+	padding: .5em;
+}*/
+
+.boton{
+	color: white;
+	background: #dde1e4;
+	/*background: #d2ebf9;*/
+	width: 20px;
+	padding: 1px;
 }
 
-.titulo {
+.boto{
+	background: #055584;
+	color: white;
 	text-align: center;
-	font-size: 1.25em;
-	font-weight: bold;
-	padding: 0.20em 0;
-	color: #FFF;
-	background: #5C85AD;
-	text-shadow: 1px 1px 1px #000;
 }
 
-.enca {	/*para el th */
-	padding: .5em .15em .5em 1.0em;
+.courgete{
+	font-family: 'Courgette', cursive;
 }
 
-.campo-medio {
-	/*width: 150px;*/
-	width: 10em;
+.fondoazul{
+	background: #055584;
+}
+
+.letrablanca{
+	color:white;
+	padding: 0px;
+	margin: 0px;
 }
