@@ -1,0 +1,13 @@
+<?php 
+	session_start();
+	include('includes/global.php');
+	$id="nothing";
+	if($_SESSION['user']){	
+		session_destroy();
+		$_SESSION['usuario']=$id;
+		header("location:inicio.php");
+	}
+	else{
+		header("location:inicio.php");
+	}
+?>

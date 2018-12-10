@@ -1,0 +1,35 @@
+
+body {
+	font: 100% sans-serif; 
+	font-size: 1.0625em;
+}
+
+p {	width: 80%;	}
+
+.tabla {
+	width: 38em;
+	border-collapse: collapse;
+	box-shadow: 3px 3px 7px #336699; 
+	font-size: .8125em;
+	text-align: left;
+}
+
+.titulo {
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: bold;
+	padding: 0.20em 0;
+	color: #FFF;
+	background: #5C85AD;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.enca {	/*para el th */
+	padding: .5em .15em .5em 1.0em;
+}
+
+.campo-medio {
+	/*width: 150px;*/
+	width: 10em;
+}
+
