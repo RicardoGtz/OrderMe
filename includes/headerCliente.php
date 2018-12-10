@@ -1,6 +1,3 @@
-<?php
-	$usuario = $_SESSION['usuario'];
-?>
 <header>
 	<nav>
 		<ul title="Tabla de contenidos" class="navegador">
