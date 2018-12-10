@@ -15,10 +15,8 @@
 <body>
 	<?php
 		include('connectmysql.php');
-		include('includes/global.php');
-		$getUsuario=$_SESSION['usuario'];
-		$sqldata= mysqli_query($dbcon,"call VerOrdenUsuario('$getUsuario')");
-
+    $id=$_SESSION['usuario'];
+		$sqldata= mysqli_query($dbcon,"call VerOrdenUsuario('$id')");
         while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
           	echo '<table class="tabla">';
           	echo '<tr><th colspan="4" class="titulo">'.utf8_encode($row[0]).'</th></tr>';

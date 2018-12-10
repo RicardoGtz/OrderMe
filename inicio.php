@@ -10,6 +10,8 @@
 <?php
 	include('includes/global.php');
 	crearHeaders();
+  $id=$_SESSION['usuario'];
+  echo "$id";
 ?>
 <body>
 
