@@ -1,33 +1,73 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <title>Restaurantes - OrderMe</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="comun/librerias/bootstrap/css/bootstrap.css">
-  	<link rel="stylesheet" href="comun/css/estilo.css">
-	<script src="comun/librerias/bootstrap/js/bootstrap.js"></script>
-	<link rel="stylesheet" href="comun/css/estilos.css" />
+	<title>Restaurante - Administrador</title>
+  <?php include('includes/links.php'); ?>
 </head>
 <?php
-	include('includes/global.php');
-	crearHeaders();
+  error_reporting(0);
+  include('connectmysql.php');
+  if(isset($_GET['delete_id']))//Si esta puesto el get entonces se ejecuta, dice delete id pero realmente puede llevar cualquier valor, solo es renombrar la variable abajo en el boton
+  {
+    $res=$_GET['delete_id'];//le doy el valor de los GET a variables ya que si lo hacia directo habia problemas con las comillas (cosas raras),
+    $sql_query="call EliminarRestaurante('$res')";
+    $r= @mysqli_query($dbcon,$sql_query);
+    header("Location: restaurante.php");
+  }
 ?>
+<?php
+  include('includes/global.php');
+  crearHeaders();
+?>
+
 <body>
-	<?php
-    include('connectmysql.php');
-		$sqldata= mysqli_query($dbcon,"call VerRestaurante()");
+<div class="contenedor">
+  <h1 class="courgete">Ciudades</h1>
+  <p></p>
+  <p class="centrado">A continuacion, se mostrara el catalogo de los las ciudades donde trabaja la empresa Farmacias "El Dorado"</p>
+    <?php
+      if (@$_SESSION['user'] == 'administradorG'){
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='cityinsert.php'></div>";
+      }
+    ?>
+  <p></p>
+  <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Codigo Restaurante</th>
+            <th>Nombre</th>
+            <?php
+            if (@$_SESSION['user'] == 'administradorG'){
+              echo "<th>Editar</th>";
+              echo "<th>Eliminar</th>";
+            }
+            ?>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            include('connectmysql.php');
+
+            $sqldata= mysqli_query($dbcon,"call VerRestaurante()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
-              	echo '<table class="tabla">';
-              	echo '<tr><th colspan="4" class="titulo">'.utf8_encode($row[1]).'</th></tr>';
-              	echo '<tr><td colspan="4" class="enca">';
-              	echo "<a href='sucursales.php?id=$row[0]&p=$row[1]'>Ver Sucursales";
-				echo '</td><tr>';
-				echo '</table>';
+              echo "<tr><td>";
+              echo utf8_encode($row[0]);
+              echo "</td><td>";
+              echo utf8_encode($row[1]);
+              echo "</td>";
+              if (@$_SESSION['user'] == 'administradorG'){
+                echo "<td><a href='resinsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='restaurante.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
+                echo "<tr>";
+              }
             }
-	?>
-<?php
-	include('includes/footer.html');
-?>
+          ?>
+        </tbody>
+      </table>
+  </div>
+  <?php include('includes/footer.html'); ?>
+</div>
 </body>
 </html>

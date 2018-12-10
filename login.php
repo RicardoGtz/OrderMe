@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Login - OrderMe</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="comun/librerias/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="comun/css/estilos.css">
-	<script src="comun/librerias/bootstrap/js/bootstrap.js"></script>
+	<title>Login - OrderMe</title>
+	<?php include('includes/links.php'); ?>
 </head>
 <?php
   error_reporting(0);
@@ -19,26 +16,26 @@
       include('includes/headerInvitado.php');
     }
 ?>
-<?php 
+<?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		require ('connectmysql.php');
-		$errors = array(); 
-  
-		if (empty($_POST['id'])) 
+		$errors = array();
+
+		if (empty($_POST['id']))
 			$errors[] = 'Olvido introducir su usuario.';
 		else{
 			$id = trim($_POST['id']);
 			$id= mysqli_real_escape_string($dbcon, $id);
 		}
 
-		if (empty($_POST['pass'])) 
+		if (empty($_POST['pass']))
 			$errors[] = 'Olvido introducir su password.';
 		else{
-			$pass = trim($_POST['pass']); 
+			$pass = trim($_POST['pass']);
 			$pass = mysqli_real_escape_string($dbcon, $pass);
 		}
 		if(empty($errores)){
-			session_start();    
+			session_start();
 			$query = "select RevisarLogin('$id','$pass') as resp";
 			$resultado = mysqli_query($dbcon, $query);
 			$row = mysqli_fetch_assoc($resultado);
@@ -69,7 +66,7 @@
 			}
 			mysqli_close($dbcon);
 		}
-		else { 
+		else {
 			echo '<h1>Error!</h1>
 			<p class="error">Ocurrieron los siguientes errores:<br />';
 			foreach ($errors as $msg) {

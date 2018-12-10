@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
 	<title>Registro - OrderMe</title>
-	<link rel="stylesheet" type="text/css" href="comun/librerias/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="comun/css/estilos.css">
-	<script src="comun/librerias/bootstrap/js/bootstrap.js"></script>
+	<?php include('includes/links.php'); ?>
 </head>
 <?php
 	include('includes/global.php');
@@ -19,7 +16,7 @@
 
 		if (empty($errors)){
 			$resp=insertarUsuario();
-		     
+
 			if($resp==1){
 				echo '<h1>Muchas gracias!</h1>
 					<p>Sus datos han sido registrados en la base de datos!</p><p><br /></p>';
@@ -28,7 +25,7 @@
 				if($resp==0){
 					echo '<h1>Atencion</h1>
 						<p>El registro ya existe!</p><p><br /></p>';
-				}		
+				}
 			}
 		}
 	}// Fin de acciones cuando se envía el formulario
