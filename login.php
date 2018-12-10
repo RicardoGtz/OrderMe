@@ -45,22 +45,22 @@
 			switch ($row['resp']) {
 				case 'administradorG':
 					$_SESSION['user']='administradorG';
-					$_SESSION['usuario']=$id ;
+					obtenerID($id);
 					echo '<script>alert("BIENVENIDO ADMINISTRADOR")</script>';
 				break;
 				case 'administradorR':
 					$_SESSION['user']='administradorR';
-					$_SESSION['usuario']=$id ;
+					obtenerID($id);
 					echo '<script>alert("BIENVENIDO ADMINISTRADOR DE RESTAURANTE")</script>';
 				break;
 				case 'cliente':
 					$_SESSION['user']='cliente';
-					$_SESSION['usuario']=$id ;
+					obtenerID($id);
 					echo '<script>alert("BIENVENIDO USUARIO")</script>';
 				break;
 				case 'empleado':
 					$_SESSION['user']='empleado';
-					$_SESSION['usuario']=$id ;
+					obtenerID($id);
 					echo '<script>alert("BIENVENIDO EMPLEADO")</script>';
 				break;
 				default:

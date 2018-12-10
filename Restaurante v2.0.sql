@@ -301,7 +301,8 @@ end$$
 delimiter $$
 create procedure VerCiudad()
 begin
- 	Select * from Ciudad;
+ 	Select * from Ciudad
+    order by pronvincia;
 end$$
 
 -- call VerRestaurante();

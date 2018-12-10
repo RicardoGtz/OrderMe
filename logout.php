@@ -4,7 +4,7 @@
 	$id="nothing";
 	if($_SESSION['user']){	
 		session_destroy();
-		$_SESSION['usuario']=$id;
+		obtenerID('nothing');
 		header("location:inicio.php");
 	}
 	else{
