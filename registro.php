@@ -8,27 +8,8 @@
 	<script src="comun/librerias/bootstrap/js/bootstrap.js"></script>
 </head>
 <?php
-	session_start();
-	if(@$_SESSION['user'] == 'administradorG'){
-		include("includes/headerGlobal.php"); 
-		echo "Hola Adm Global";
-	}
-	elseif (@$_SESSION['user']=='administradorR'){
-		include("includes/headerLocal.php");
-		echo "Hola Adm Local";
-	}
-	elseif (@$_SESSION['user']=='empleado'){
-		include('includes/headerCliente.php');
-		echo "Hola Empleado";
-	}
-	elseif (@$_SESSION['user']=='cliente'){
-		include('includes/headerCliente.php'); 
-		echo "Hola Cliente";
-	}
-	elseif (@!$_SESSION['user']) {
-		include('includes/headerInvitado.php');
-		echo "Hola Invitado";
-	}
+	include('includes/global.php');
+	crearHeaders();
 ?>
 <?php
 	include('includes/global.php');
