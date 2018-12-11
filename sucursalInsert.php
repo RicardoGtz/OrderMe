@@ -19,14 +19,18 @@
 
 			if($resp==1){
 				echo '<h1>Muchas gracias!</h1>
-					<p>Sus datos han sido registrados en la base de datos!</p><p><br /></p>';
+							<p>Los datos han sido registrados en la base de datos!</p><p><br /></p>';
+			}else	if($resp==2){
+				echo '<h1>Atencion</h1>
+							<p>No existe es combinacion de Ciudad y Provincia!</p><p><br /></p>';
+			}else if($resp==3){
+				echo '<h1>Atencion</h1>
+							<p>No existe ese restaurante!</p><p><br /></p>';
+			}else if($resp==0){
+				echo '<h1>Atencion</h1>
+							<p>Ya existe esa sucursal!</p><p><br /></p>';
 			}
-			else{
-				if($resp==0){
-					echo '<h1>Atencion</h1>
-						<p>El registro ya existe!</p><p><br /></p>';
-				}
-			}
+
 		}
 	}// Fin de acciones cuando se envía el formulario
 ?>
@@ -36,7 +40,11 @@
 		<p></p>
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
-			<form action="registro.php" method="POST">
+			<form action="sucursalInsert.php" method="POST">
+				<p>Nombre de la Sucursal</p><input type="text" name="nombre" required maxlength="7" value=""><br>
+				<p>Nombre de la Sucursal</p><input type="text" name="nombre" required maxlength="40" value=""><br>
+
+
 				<p>ID del Usuario:</p><input type="text" name="id_usuario" required maxlength="7" value=""><br>
 				<p>Nombre del Usuario:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
 				<p>Correo:</p><input type="text" name="correo" required maxlength="40" value=""><br>
