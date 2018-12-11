@@ -9,7 +9,7 @@
 	crearHeaders();
 ?>
 <?php
-	//include('includes/global.php');
+	include('includes/global.php');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors = array();
 		$errors=checarUsuario($errors);
@@ -37,8 +37,16 @@
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
 			<form action="registro.php" method="POST">
-        <p>Nombre de ciudad:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
-        <p>Provincia (Estado):</p><input type="text" name="provincia" required maxlength="40" value=""><br>
+				<p>ID del Usuario:</p><input type="text" name="id_usuario" required maxlength="7" value=""><br>
+				<p>Nombre del Usuario:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
+				<p>Correo:</p><input type="text" name="correo" required maxlength="40" value=""><br>
+				<p>Password:</p><input type="text" name="pass" required maxlength="10" value=""><br>
+				<p>Telefono:</p><input type="text" name="telefono" maxlength="10" required pattern="[0-9]+" value=""><br>
+				<p>Numero de Tarjeta:</p><input type="text" name="num_tarjeta" maxlength="16" required pattern="[0-9]+" value=""><br>
+				<p>Mes de Vencimiento:</p><input type="text" name="mes" maxlength="2" required pattern="[0-9]+" value=""><br>
+				<p>Año de Vencimiento:</p><input type="text" name="anio" maxlength="2" required pattern="[0-9]+" value=""><br>
+				<p>CVV:</p><input type="text" name="cvv" maxlength="3" required pattern="[0-9]+" value=""><br>
+				<p>Nombre del Titular:</p><input type="text" name="titular" required maxlength="40" value=""><br>
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
 			</form>
 		</div>
