@@ -41,22 +41,19 @@
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
 			<form action="sucursalInsert.php" method="POST">
-				<p>ID de la sucursal</p><input type="text" name="nombre" required maxlength="7" value=""><br>
+				<p>ID de la sucursal</p><input type="text" name="id_sucursal" required maxlength="7" value=""><br>
 				<p>Nombre de la Sucursal</p><input type="text" name="nombre" required maxlength="40" value=""><br>
-				<!-- AQUI DESPLEGAR LISTA DE CIUDADES -->
-				<p>Estado de la sucursal</p><input type="text" mane="nombre" required maxlength="40" value=""><br>
-
-
-				<p>ID del Usuario:</p><input type="text" name="id_usuario" required maxlength="7" value=""><br>
-				<p>Nombre del Usuario:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
-				<p>Correo:</p><input type="text" name="correo" required maxlength="40" value=""><br>
-				<p>Password:</p><input type="text" name="pass" required maxlength="10" value=""><br>
-				<p>Telefono:</p><input type="text" name="telefono" maxlength="10" required pattern="[0-9]+" value=""><br>
-				<p>Numero de Tarjeta:</p><input type="text" name="num_tarjeta" maxlength="16" required pattern="[0-9]+" value=""><br>
-				<p>Mes de Vencimiento:</p><input type="text" name="mes" maxlength="2" required pattern="[0-9]+" value=""><br>
-				<p>Año de Vencimiento:</p><input type="text" name="anio" maxlength="2" required pattern="[0-9]+" value=""><br>
-				<p>CVV:</p><input type="text" name="cvv" maxlength="3" required pattern="[0-9]+" value=""><br>
-				<p>Nombre del Titular:</p><input type="text" name="titular" required maxlength="40" value=""><br>
+				<!-- AQUI DESPLEGAR LISTA DE CIUDADES Y ESTADOS -->
+				<p>Estado:</p><input type="text" mane="estado" required maxlength="40" value=""><br>
+				<p>Ciudad:</p><input type="text" name="ciudad" required maxlength="40" value=""><br>
+				<!-- ******************************** -->
+				<p>Direccion:</p><input type="text" name="direccion" required maxlength="40" value=""><br>
+				<p>Hora de apertura:</p><input type="text" name="h_apertura" required maxlength="10" value=""><br>
+				<p>Hora de cierre:</p><input type="text" name="h_cierre" required maxlength="10" value=""><br>
+				<p>Telefono:</p><input type="text" name="telefono" required maxlength="10" value=""><br>
+				<!-- AQUI DESPLEGAR LISTA DE RESTAURANTES -->
+				<p>ID del restaurante:</p><input type="text" name="id_restaurante" required maxlength="7" value=""><br>
+				<!-- ******************************** -->
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
 			</form>
 		</div>
