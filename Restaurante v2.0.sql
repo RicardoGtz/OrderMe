@@ -319,13 +319,13 @@ begin
   	Select * from Sucursal;
 end$$
 
--- call VerSucursalRestaurante("res0001");
+-- call VerSucursalRestaurante("adm0001");
 delimiter $$
-create procedure VerSucursalRestaurante(in restaurante varchar(7))
+create procedure VerSucursalRestaurante(in idAdmin varchar(7))
 begin
   	Select *
   	from Sucursal
-  	where id_restaurante=restaurante
+  	where id_restaurante in (select id_restaurante from Administrador where usuario=idAdmin)
   	Order by nombre;
 end$$
 
