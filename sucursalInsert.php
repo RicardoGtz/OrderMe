@@ -9,7 +9,7 @@
 	crearHeaders();
 ?>
 <?php
-	include('includes/global.php');
+	//include('includes/global.php');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors = array();
 		$errors=checarUsuario($errors);
@@ -41,8 +41,10 @@
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
 			<form action="sucursalInsert.php" method="POST">
-				<p>Nombre de la Sucursal</p><input type="text" name="nombre" required maxlength="7" value=""><br>
+				<p>ID de la sucursal</p><input type="text" name="nombre" required maxlength="7" value=""><br>
 				<p>Nombre de la Sucursal</p><input type="text" name="nombre" required maxlength="40" value=""><br>
+				<!-- AQUI DESPLEGAR LISTA DE CIUDADES -->
+				<p>Estado de la sucursal</p><input type="text" mane="nombre" required maxlength="40" value=""><br>
 
 
 				<p>ID del Usuario:</p><input type="text" name="id_usuario" required maxlength="7" value=""><br>

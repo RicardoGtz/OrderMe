@@ -36,7 +36,7 @@
 		<p></p>
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
-			<form action="ciudadInsert.php" method="POST">
+			<form action="ciudadInse.php" method="POST">
         <p>Nombre de ciudad:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
         <p>Provincia (Estado):</p><input type="text" name="provincia" required maxlength="40" value=""><br>
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
