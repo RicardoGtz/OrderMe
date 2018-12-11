@@ -408,7 +408,7 @@ end$$
 delimiter $$
 create procedure VerResena()
 begin
-  	Select Platillo.nombre, Usuario.nombre, calificacion, comentario
+  	Select Resena.id_platillo, Resena.id_usuario, Platillo.nombre, Usuario.nombre, calificacion, comentario
   	from Platillo join Usuario join Resena
   	on Resena.id_platillo=Platillo.id_platillo and Resena.id_usuario=Usuario.id_usuario
   	Order by Platillo.nombre;
