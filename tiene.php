@@ -28,7 +28,7 @@
   <p class="centrado">A continuacion, se mostraran las relaciones de Sucursal/Platillo con las que cuenta cada restaurante.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='tieneinsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='tieneInsert.php'></div>";
       }
     ?>
   <p></p>
@@ -58,7 +58,7 @@
               echo utf8_encode($row[1]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='tieneinsert.php?id=$row[0]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='tieneInsert.php?id=$row[0]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
                 echo "<td><a href='tiene.php?delete_id=$row[0]&sucu=$row[1]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }

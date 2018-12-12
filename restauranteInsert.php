@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Restaurante - OrderMe</title>
+	<title>Restaurante - Administrador</title>
 	<?php include('includes/links.php'); ?>
 </head>
 <?php
