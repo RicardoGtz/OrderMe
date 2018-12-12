@@ -10,7 +10,7 @@
   require('connectmysql.php');
 	crearHeaders();
   $id=$_SESSION['usuario'];
-  //echo "el id: $id";
+
   echo '<h2>Platillos que maneja ésta sucursal</h2>';
   //Comienza consulta a BD
   $query = "CALL getPlatillos('".$id."')"; //Llamo al procedimiento almacenado para recuperar todo acerca de los platillos de un empleado que pertenece a una sucursal

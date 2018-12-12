@@ -6,9 +6,8 @@
 			<li><a href="perfil.php">Ver Perfil</a></li>
 			<li><a href="#">Administrar</a>
         		<ul>
-          			<li><a href="tiene.php">Platillos</a></li>
-          			<li><a href="orden.php">Orden</a></li>
-          			<li><a href="pedido.php">Pedido</a></li>
+          			<li><a href="tieneR.php">Platillos</a></li>
+          			<li><a href="gestOrdenes.php">Órdenes y Pedidos</a></li>
         		</ul>
       		</li>
 			<li><a href="logout.php">Cerrar Sesion</a></li>
