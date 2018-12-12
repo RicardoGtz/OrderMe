@@ -44,7 +44,15 @@
         <p>Nombre del Platillo:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
         <p>Descripción:</p><input type="text" name="descripcion" required maxlength="200" value=""><br>
         <p>Precio: $</p><input type="number" name="precio" step="0.01" required pattern="[0-9]{1,5}\.[0-9]{1,2}$|[0-9]{1,5}$" maxlength="99999.99" minlength="0" value=""><br>
-        <!-- Insertar imagen aqui -->
+        <p>Fotografia:</p><input type="file" name="fotografia" required maxlength="40" value="" onchange="loadFile(event)"><br>
+        <!-- Carga la foto -->
+        <img id="output" width="200" height="200"/>
+        <script>
+          var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+          };
+        </script>
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
 			</form>
 		</div>
