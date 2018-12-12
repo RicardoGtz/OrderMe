@@ -54,8 +54,11 @@
             include('connectmysql.php');
             if($_SESSION['user']=='administradorG')
               $sqldata= mysqli_query($dbcon,"call VerSucursal()");
-            if($_SESSION['user']=='administradorL')
-              $sqldata= mysqli_query($dbcon,"call VerSucursal()");
+            if($_SESSION['user']=='administradorL'){
+							$id=$_SESSION['usuario'];
+							echo "$id";
+							$sqldata= mysqli_query($dbcon,"call VerSucursalRestauranteA('adm0001')");
+						}
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
               echo "<tr><td>";
