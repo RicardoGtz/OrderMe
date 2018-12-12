@@ -20,25 +20,21 @@
   if($num > 0) {
     while($row = mysqli_fetch_array($resultado, MYSQLI_NUM)) {
       echo '<table class="tabla" align="center">';
-      /*echo '<tr><th colspan="4" class="titulo">Nombre</th><th colspan="4" class="titulo">dfd</th></tr>';
-      echo '<td>jbhb</td><td>ddfdfs</td>';*/
       echo '<tr>';
       echo '<th class="titulo">Nombre</th>';
       echo '<th class="titulo">Descripcion</th>';
       echo '<th class="titulo">Precio</th>';
       echo '</tr>';
-
       echo '<tr>';
       echo '<td>'.$row[0].'</td>';
       echo '<td>'.$row[1].'</td>';
       echo '<td>'.$row[2].'</td>';
       echo '</tr>';
-
       echo '</table>';
     }
   }
   else {
-    //echo '<script>alert("No existen platillos actualmente")</script>';
+    echo '<h2>No existen platillos actualmente</h2>';
   }
 
 ?>
