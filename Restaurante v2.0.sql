@@ -343,9 +343,18 @@ begin
   	Select * from Sucursal;
 end$$
 
+delimiter $$
+create procedure VerSucursalRestaurante(in idRes varchar(7))
+begin
+  	Select *
+  	from Sucursal
+  	where id_restaurante = idRes
+  	Order by nombre;
+end$$
+
 -- call VerSucursalRestaurante("adm0001");
 delimiter $$
-create procedure VerSucursalRestaurante(in idAdmin varchar(7))
+create procedure VerSucursalRestauranteA(in idAdmin varchar(7))
 begin
   	Select *
   	from Sucursal
