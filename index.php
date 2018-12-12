@@ -1,7 +1,7 @@
 ﻿<?php
 session_start();
 $usuario = @$_SESSION['user'];
-//echo $usuario;
+echo $usuario;
 ?>
 
 <html>
