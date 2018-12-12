@@ -27,7 +27,7 @@
   <p class="centrado">A continuacion, se mostrara el catalogo de todos los platillos registrados para la aplicación OrderMe."</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='plainsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='platilloInsert.php'></div>";
       }
     ?>
   <p></p>
