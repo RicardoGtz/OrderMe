@@ -9,7 +9,6 @@
 	crearHeaders();
 ?>
 <?php
-	include('includes/global.php');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors = array();
 		$errors=checarUsuario($errors);

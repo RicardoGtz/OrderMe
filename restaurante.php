@@ -22,12 +22,12 @@
 
 <body>
 <div class="contenedor">
-  <h1 class="courgete">Ciudades</h1>
+  <h1 class="courgete">Restaurantes</h1>
   <p></p>
-  <p class="centrado">A continuacion, se mostrara el catalogo de los las ciudades donde trabaja la empresa Farmacias "El Dorado"</p>
+  <p class="centrado">A continuacion, se mostrara el catalogo de los restaurantes que forman parte de la aplicación OrderMe.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='cityinsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='resinsert.php'></div>";
       }
     ?>
   <p></p>

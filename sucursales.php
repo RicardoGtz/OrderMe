@@ -26,7 +26,7 @@
               	echo '<tr><th class="enca">Hora de Apertura:</th><td>'.utf8_encode($row[5]).'</td>';
               	echo '<th>Hora de Cierre:</th><td>'.utf8_encode($row[6]).'</td></tr>';
               	echo '<tr><td colspan="4" class="enca">';
-              	echo "<a href='platillo.php?id=$row[0]'>Ver Platillos";
+              	echo "<a href='platillos.php?id=$row[0]'>Ver Platillos";
 				echo '</td><tr>';
               	echo '</table></br>';
             }
