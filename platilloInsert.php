@@ -11,25 +11,58 @@
 <?php
 	//include('includes/global.php');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		include ('connectmysql.php');
 		$errors = array();
-		$errors=checarUsuario($errors);
+		if (empty($_POST['id_platillo']))
+			$errors[] = 'Olvido introducir el ID del Platillo';
+		else{
+			$platillo = trim($_POST['id_platillo']);
+			$platillo = mysqli_real_escape_string($dbcon, $platillo);
+		}
+
+		if (empty($_POST['nombre']))
+			$errors[] = 'Olvido introducir el Nombre del Platillo';
+		else{
+			$nombre = trim($_POST['nombre']);
+			$nombre = mysqli_real_escape_string($dbcon, $nombre);
+		}
+
+		if (empty($_POST['descripcion']))
+			$errors[] = 'Olvido introducir la Descripcion';
+		else{
+			$descripcion = trim($_POST['descripcion']);
+			$descripcion = mysqli_real_escape_string($dbcon, $descripcion);
+		}
+
+		if (empty($_POST['precio']))
+			$errors[] = 'Olvido introducir el Precio';
+		else{
+			$precio = trim($_POST['precio']);
+			$precio = mysqli_real_escape_string($dbcon, $precio);
+		}
+
+		$rutaEnServidor='comun/img/platillo/';
+		$rutaTemporal1=$_FILES['fotografia']['tmp_name'];
+		$nombreImagen1=$_FILES['fotografia']['name'];
+		$rutaCedula=$rutaEnServidor.$nombreImagen1;
+		move_uploaded_file($rutaTemporal1,$rutaCedula);
 
 		if (empty($errors)){
-			$resp=insertarUsuario();
+			$query="select InsertarPlatillo('$platillo','$nombre','$descripcion','$precio','$rutaCedula') as resp";
+			$res=@mysqli_query($dbcon,$query);
+			$row=mysqli_fetch_assoc($res);
+			$resp=$row['resp'];
+			mysqli_close($dbcon);
 
 			if($resp==1){
 				echo '<h1>Muchas gracias!</h1>
-					<p>El platillo han sido registrado en la base de datos!</p><p><br /></p>';
-			}
-			else if($resp==2){
+							<p>Los datos han sido registrados en la base de datos!</p><p><br /></p>';
+
+			}else if($resp==0){
 				echo '<h1>Atencion</h1>
-					    <p>No existe la combinacion de Ciudad y Estado!</p><p><br /></p>';
-			}else if($resp==3){
-        echo '<h1>Atencion</h1>
-              <p>El restaurante no existe!</p><p><br /></p>';
-      }else if($resp==0)
-        echo '<h1>Atencion</h1>
-              <p>El registro ya existe!</p><p><br /></p>';
+							<p>Ya existe ese Platillo!</p><p><br /></p>';
+				unlink("$rutaCedula");
+			}
 		}
 	}// Fin de acciones cuando se envía el formulario
 ?>
@@ -39,20 +72,12 @@
 		<p></p>
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
-			<form action="platilloInsert.php" method="POST">
+			<form action="platilloInsert.php" method="POST" enctype="multipart/form-data">
         <p>ID del Platillo:</p><input type="text" name="id_platillo" required maxlength="7" value=""><br>
         <p>Nombre del Platillo:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
         <p>Descripción:</p><input type="text" name="descripcion" required maxlength="200" value=""><br>
         <p>Precio: $</p><input type="number" name="precio" step="0.01" required pattern="[0-9]{1,5}\.[0-9]{1,2}$|[0-9]{1,5}$" maxlength="99999.99" minlength="0" value=""><br>
-        <p>Fotografia:</p><input type="file" name="fotografia" required maxlength="40" value="" onchange="loadFile(event)"><br>
-        <!-- Carga la foto -->
-        <img id="output" width="200" height="200"/>
-        <script>
-          var loadFile = function(event) {
-            var output = document.getElementById('output');
-            output.src = URL.createObjectURL(event.target.files[0]);
-          };
-        </script>
+        <p>Fotografia:</p><input type="file" name="fotografia" required><br>
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
 			</form>
 		</div>

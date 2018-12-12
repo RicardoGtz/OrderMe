@@ -10,11 +10,84 @@
 ?>
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		include ('connectmysql.php');
 		$errors = array();
-		$errors=checarUsuario($errors);
+		if (empty($_POST['id_usuario']))
+			$errors[] = 'Olvido introducir el ID del Usuario';
+		else{
+			$ni = trim($_POST['id_usuario']);
+			$ni = mysqli_real_escape_string($dbcon, $ni);
+		}
+
+		if (empty($_POST['nombre']))
+			$errors[] = 'Olvido introducir el Nombre del Usuario';
+		else{
+			$nn = trim($_POST['nombre']);
+			$nn = mysqli_real_escape_string($dbcon, $nn);
+		}
+
+		if (empty($_POST['correo']))
+			$errors[] = 'Olvido introducir el Correo del Usuario';
+		else{
+			$nc = trim($_POST['correo']);
+			$nc = mysqli_real_escape_string($dbcon, $nc);
+		}
+
+		if (empty($_POST['pass']))
+			$errors[] = 'Olvido introducir la Contraseña';
+		else{
+			$np = trim($_POST['pass']);
+			$np = mysqli_real_escape_string($dbcon, $np);
+		}
+
+		if (empty($_POST['telefono']))
+			$errors[] = 'Olvido introducir el nombre del usuario';
+		else{
+			$nt = trim($_POST['telefono']);
+			$nt = mysqli_real_escape_string($dbcon, $nt);
+		}
+
+		if (empty($_POST['num_tarjeta']))
+			$errors[] = 'Olvido introducir el nombre del usuario';
+		else{
+			$nta = trim($_POST['num_tarjeta']);
+			$nta = mysqli_real_escape_string($dbcon, $nta);
+		}
+
+		if (empty($_POST['mes']))
+			$errors[] = 'Olvido introducir el nombre del usuario';
+		else{
+			$nm = trim($_POST['mes']);
+			$nm = mysqli_real_escape_string($dbcon, $nm);
+		}
+
+		if (empty($_POST['anio']))
+			$errors[] = 'Olvido introducir el nombre del usuario';
+		else{
+			$na = trim($_POST['anio']);
+			$na = mysqli_real_escape_string($dbcon, $na);
+		}
+
+		if (empty($_POST['cvv']))
+			$errors[] = 'Olvido introducir el nombre del usuario';
+		else{
+			$ncvv = trim($_POST['cvv']);
+			$ncvv = mysqli_real_escape_string($dbcon, $ncvv);
+		}
+
+		if (empty($_POST['titular']))
+			$errors[] = 'Olvido introducir el nombre del usuario';
+		else{
+			$nti = trim($_POST['titular']);
+			$nti = mysqli_real_escape_string($dbcon, $nti);
+		}
 
 		if (empty($errors)){
-			$resp=insertarUsuario();
+			$query="select InsertarUsuario('$ni','$nn','$nc','$np','$nt','$nta','$nm','$na','$ncvv','$nti') as resp";
+			$res=@mysqli_query($dbcon,$query);
+			$row=mysqli_fetch_assoc($res);
+			$resp=$row['resp'];
+			mysqli_close($dbcon);
 
 			if($resp==1){
 				echo '<h1>Muchas gracias!</h1>

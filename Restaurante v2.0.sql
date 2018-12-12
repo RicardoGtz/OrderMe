@@ -294,6 +294,13 @@ begin
     return respuesta;
 end$$
 
+-- call ObtenerRestaurante("adm0002");
+delimiter $$
+create procedure ObtenerRestaurante(in id varchar(7))
+begin
+    select id_restaurante from Administrador where usuario=id;
+end$$
+
 -- select RevisarLogin("adm0001","root0001");
 
 -- ============================================= Son todos los Select (Estan por orden) =============================================
