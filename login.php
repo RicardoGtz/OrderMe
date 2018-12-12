@@ -48,6 +48,7 @@
 				case 'administradorR':
 					$_SESSION['user']='administradorR';
 					obtenerID($id);
+					echo '<script>alert($id)</script>';
 					echo '<script>alert("BIENVENIDO ADMINISTRADOR DE RESTAURANTE")</script>';
 				break;
 				case 'cliente':
@@ -59,6 +60,7 @@
 					$_SESSION['user']='empleado';
 					obtenerID($id);
 					echo '<script>alert("BIENVENIDO EMPLEADO")</script>';
+					header("location:inicio.php");
 				break;
 				default:
 					echo '<script>alert("Los datos no coinciden")</script>';

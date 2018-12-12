@@ -27,7 +27,7 @@
   <p class="centrado">A continuacion, se mostrara el catalogo de los restaurantes que forman parte de la aplicación OrderMe.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='resinsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='restauranteInsert.php'></div>";
       }
     ?>
   <p></p>
@@ -58,7 +58,7 @@
               echo utf8_encode($row[1]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='resinsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='restauranteInsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
                 echo "<td><a href='restaurante.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }

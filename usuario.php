@@ -27,7 +27,7 @@
   <p class="centrado">A continuacion, se mostrarán los usuarios/clientes que han sigo registrados para la aplicación OrderMe.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='usuinsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='registro.php'></div>";
       }
     ?>
   <p></p>
@@ -78,7 +78,7 @@
               echo utf8_encode($row[9]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='usuinsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='registro.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
                 echo "<td><a href='usuario.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }
