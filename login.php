@@ -82,23 +82,21 @@
 
 ?>
 <body>
-<body>
-<div class="contenedor">
-<h1 class="courgete">Iniciar sesion</h1>
-<p></p>
-<p class="centrado">Por favor asegurate de que tus datos esten correctos y que todos los campos del formulario esten llenos
-</p>
-<p></p>
-<div class="contenedor col-md-3 center-block fondoazul">
-<form action="login.php" method="POST">
-<p class="letrablanca">Id de Usuario:</p><input type="text" name="id" maxlength="7" value=""><br>
-<p class="letrablanca">Password:</p><input type="password" name="pass" maxlength="10" value=""><br>
-<br>
-<input type="submit" value="Aceptar" class="btn btn-success btn-primary">
-</form>
-</div>
-<p></p>
+	<div class="contenedor">
+			<h1 class="courgete">Iniciar sesion</h1>
+			<p></p>
+			<p class="centrado">Por favor asegurate de que tus datos esten correctos y que todos los campos del formulario esten llenos</p>
+			<p></p>
+			<div class="contenedor col-md-3 center-block fondoazul">
+				<form action="login.php" method="POST">
+					<p class="letrablanca">Id de Usuario:</p><input type="text" name="id" maxlength="7" value=""><br>
+					<p class="letrablanca">Password:</p><input type="password" name="pass" maxlength="10" value=""><br>
+					<br>
+					<input type="submit" value="Aceptar" class="btn btn-success btn-primary">
+				</form>
+			</div>
+			<p></p>
 <?php include('includes/footer.html'); ?>
-</div>
+	</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Platillo - Administrador</title>
+	<title>Administrador - Administrador</title>
   <?php include('includes/links.php'); ?>
 </head>
 <?php
@@ -9,10 +9,10 @@
   include('connectmysql.php');
   if(isset($_GET['delete_id']))//Si esta puesto el get entonces se ejecuta, dice delete id pero realmente puede llevar cualquier valor, solo es renombrar la variable abajo en el boton
   {
-    $pla=$_GET['delete_id'];//le doy el valor de los GET a variables ya que si lo hacia directo habia problemas con las comillas (cosas raras),
-    $sql_query="call EliminarPlatillo('$pla')";
+    $adm=$_GET['delete_id'];//le doy el valor de los GET a variables ya que si lo hacia directo habia problemas con las comillas (cosas raras),
+    $sql_query="call EliminarAdministrador('$adm')";
     $r= @mysqli_query($dbcon,$sql_query);
-    header("Location: platillo.php");
+    header("Location: administrador.php");
   }
 ?>
 <?php
@@ -22,12 +22,12 @@
 
 <body>
 <div class="contenedor">
-  <h1 class="courgete">Platillos</h1>
+  <h1 class="courgete">Administradores</h1>
   <p></p>
-  <p class="centrado">A continuacion, se mostrara el catalogo de todos los platillos registrados para la aplicación OrderMe."</p>
+  <p class="centrado">A continuacion, se mostrarán todos los administradores creados para darle mantenimiento a los restaurantes.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='platilloInsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='administradorInsert.php'></div>";
       }
     ?>
   <p></p>
@@ -35,11 +35,11 @@
     <table class="table table-striped">
         <thead>
           <tr>
-            <th>Platillo</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Fotografia</th>
+            <th>Administrador</th>
+            <th>Contraseña</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Restaurante</th>
             <?php
             if (@$_SESSION['user'] == 'administradorG'){
               echo "<th>Editar</th>";
@@ -51,7 +51,7 @@
         <tbody>
           <?php
             include('connectmysql.php');
-            $sqldata= mysqli_query($dbcon,"call VerPlatillo()");
+            $sqldata= mysqli_query($dbcon,"call VerAdministrador()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
               echo "<tr><td>";
@@ -61,13 +61,13 @@
               echo "</td><td>";
               echo utf8_encode($row[2]);
               echo "</td><td>";
-              echo '$'.utf8_encode($row[3]);
-              echo "</td><td>";
               echo utf8_encode($row[4]);
+              echo "</td><td>";
+              echo utf8_encode($row[3]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='plainsert.php?id=$row[0]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
-                echo "<td><a href='platillo.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
+                echo "<td><a href='administradorInsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='administrador.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }
             }

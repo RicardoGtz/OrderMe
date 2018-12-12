@@ -294,6 +294,13 @@ begin
     return respuesta;
 end$$
 
+-- call ObtenerRestaurante("adm0002");
+delimiter $$
+create procedure ObtenerRestaurante(in id varchar(7))
+begin
+    select id_restaurante from Administrador where usuario=id;
+end$$
+
 -- select RevisarLogin("adm0001","root0001");
 
 -- ============================================= Son todos los Select (Estan por orden) =============================================
@@ -336,13 +343,13 @@ begin
   	Select * from Sucursal;
 end$$
 
--- call VerSucursalRestaurante("res0001");
+-- call VerSucursalRestaurante("adm0001");
 delimiter $$
-create procedure VerSucursalRestaurante(in restaurante varchar(7))
+create procedure VerSucursalRestaurante(in idAdmin varchar(7))
 begin
   	Select *
   	from Sucursal
-  	where id_restaurante=restaurante
+  	where id_restaurante in (select id_restaurante from Administrador where usuario=idAdmin)
   	Order by nombre;
 end$$
 
@@ -425,7 +432,7 @@ end$$
 delimiter $$
 create procedure VerResena()
 begin
-  	Select Platillo.nombre, Usuario.nombre, calificacion, comentario
+  	Select Resena.id_platillo, Resena.id_usuario, Platillo.nombre, Usuario.nombre, calificacion, comentario
   	from Platillo join Usuario join Resena
   	on Resena.id_platillo=Platillo.id_platillo and Resena.id_usuario=Usuario.id_usuario
   	Order by Platillo.nombre;
