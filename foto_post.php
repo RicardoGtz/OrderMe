@@ -1,13 +1,15 @@
 <?php
 
-require_once("conexion.php");
+//require_once("conexion.php");
 
 $nombre = $_FILES['imagen']['name'];
+echo $nombre;
 $nombrer = strtolower($nombre);
 $cd=$_FILES['imagen']['tmp_name'];
 $ruta = "img/" . $_FILES['imagen']['name'];
 $destino = "img/".$nombrer;
 $resultado = @move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
+echo $resultado;
 
 if (!empty($resultado)){
 
