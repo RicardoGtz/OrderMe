@@ -46,7 +46,7 @@ if($sub_valor=="")
 }
 switch ($sub_columna) {
     case 'ciudad':
-        $sql = "call j_md_cd('$sub_valor');";
+        $sql = "call VerCiudadEstado('$sub_valor');";
         break;
 }
 $result = mysqli_query($dbcon, $sql);
