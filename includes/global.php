@@ -7,6 +7,7 @@
 		}
 		if(isset($_SESSION['usuario'])) {
 			$aux=$usu;
+			echo '<script>alert("'.$usu.'")</script>';
 		  $_SESSION['usuario'] = $aux;
 		}
 	}
@@ -24,8 +25,8 @@
 			echo "Hola Adm Local";
 		}
 		elseif (@$_SESSION['user']=='empleado'){
-			include('includes/headerCliente.php');
-			echo "Hola Empleado";
+			include('includes/headerEmpleado.php');
+			//echo "Hola Empleado";
 		}
 		elseif (@$_SESSION['user']=='cliente'){
 			include('includes/headerCliente.php');
