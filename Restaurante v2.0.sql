@@ -297,6 +297,23 @@ end$$
 -- select RevisarLogin("adm0001","root0001");
 
 -- ============================================= Son todos los Select (Estan por orden) =============================================
+
+-- Inicia Stored Procedures exclusivos de Empleado
+DROP PROCEDURE IF EXISTS getPlatillos;
+DELIMITER $$
+CREATE PROCEDURE getPlatillos(IN idEmpleado VARCHAR(10))
+BEGIN
+	DECLARE laSucursal VARCHAR(100);
+    SELECT id_sucursal INTO laSucursal FROM empleado WHERE id_empleado=idEmpleado;
+
+    SELECT platillo.nombre, descripcion, precio, fotografia FROM platillo JOIN tiene JOIN empleado
+    WHERE platillo.id_platillo = tiene.id_platillo
+    AND tiene.id_sucursal=laSucursal
+    AND empleado.id_sucursal=tiene.id_sucursal
+    AND empleado.id_empleado=idEmpleado;
+END$$
+-- Fin de SP Empleado
+
 -- call VerCiudad();
 delimiter $$
 create procedure VerCiudad()

@@ -11,10 +11,12 @@
 <body>
 	<?php
 	include('connectmysql.php');
+
 	if(isset($_GET['id']))
 	{
 		$id=$_GET['id'];
 		echo "$id";
+    echo "holamundo";
 		$sqldata= mysqli_query($dbcon,"call VerSucursalRestaurante('$id')");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
