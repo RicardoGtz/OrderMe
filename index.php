@@ -1,7 +1,7 @@
 ﻿<?php
 session_start();
 $usuario = @$_SESSION['user'];
-//echo $usuario;
+echo $usuario;
 ?>
 
 <html>
@@ -55,6 +55,14 @@ $usuario = @$_SESSION['user'];
     $('#menu').load("includes/menu/menu.php");
     $('#botones').load("includes/botones/botones.php");
     $('#body').load("includes/body/body.php");
+
+    $('#menu_desplegable_1').load("includes/lista/lista.php",
+    {columna:'estado',
+    sub_columna:'ciudad', 
+    variable:'var4',
+    sub_variable:'var5',
+    etiqueta:'#menu_desplegable_2'});
+
   });
 </script>
 <!-- Modal para iniciar sesion-->
@@ -80,6 +88,24 @@ $usuario = @$_SESSION['user'];
                     Contraseña:
                 </label>
                 <input tabindex="2" aria-describedby="basic-addon2" aria-label="Contraseña" class="form-control input-sm rounded" id="i_var2" maxlength="10" onkeypress="return soloLetras(event);" placeholder="Contraseña" required="" type="password"/>
+
+                <label>
+                    Estado
+                </label>
+                <div id="menu_desplegable_1">
+                    <select class="custom-select" id="var4">
+                        <option value="">Selecciona un estado</option>
+                    </select>
+                </div>
+                <label>
+                    Ciudad
+                </label>
+                <div id="menu_desplegable_2">
+                    <select class="custom-select" id="var5">
+                        <option value="">Selecciona un Estado primero</option>
+                    </select>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button tabindex="3" class="btn btn-info" data-dismiss="modal" id="iniciar" type="button">
