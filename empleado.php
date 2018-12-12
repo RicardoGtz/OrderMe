@@ -27,7 +27,7 @@
   <p class="centrado">A continuacion, se mostrara el catalogo de los empleados registrados por los restaurantes y asignados a sucursales.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='empinsert.php'></div>";
+        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='empleadoInsert.php'></div>";
       }
     ?>
   <p></p>
@@ -69,7 +69,7 @@
               echo utf8_encode($row[5]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='empinsert.php?id=$row[0]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='empleadoInsert.php?id=$row[0]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
                 echo "<td><a href='empleado.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }

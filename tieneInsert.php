@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Ciudad - Adminitrador</title>
+	<title>Tiene - Administrador</title>
 	<?php include('includes/links.php'); ?>
 </head>
 <?php
@@ -13,22 +13,22 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		include ('connectmysql.php');
 		$errors = array();
-		if (empty($_POST['nombre']))
-			$errors[] = 'Olvido introducir la Ciudad';
+		if (empty($_POST['platillo']))
+			$errors[] = 'Olvido introducir la ID del Platillo';
 		else{
-			$ciudad = trim($_POST['nombre']);
-			$ciudad = mysqli_real_escape_string($dbcon, $ciudad);
+			$platillo = trim($_POST['platillo']);
+			$platillo = mysqli_real_escape_string($dbcon, $platillo);
 		}
 
-		if (empty($_POST['provincia']))
+		if (empty($_POST['sucursal']))
 			$errors[] = 'Olvido introducir el Estado';
 		else{
-			$provincia = trim($_POST['provincia']);
-			$provincia = mysqli_real_escape_string($dbcon, $provincia);
+			$sucursal = trim($_POST['sucursal']);
+			$sucursal = mysqli_real_escape_string($dbcon, $sucursal);
 		}
 
 		if (empty($errors)){
-			$query="select InsertarCiudad('$ciudad', '$provincia') as resp";
+			$query="select InsertarTiene('$platillo', '$sucursal') as resp";
 			$res=@mysqli_query($dbcon,$query);
 			$row=mysqli_fetch_assoc($res);
 			$resp=$row['resp'];
@@ -53,9 +53,9 @@
 		<p></p>
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
-			<form action="ciudadInsert.php" method="POST">
-        <p>Nombre de ciudad:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
-        <p>Provincia (Estado):</p><input type="text" name="provincia" required maxlength="40" value=""><br>
+			<form action="tieneInsert.php" method="POST">
+        <p>ID del Platillo:</p><input type="text" name="platillo" required maxlength="40" value=""><br>
+        <p>ID de la Sucursal:</p><input type="text" name="sucursal" required maxlength="40" value=""><br>
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
 			</form>
 		</div>
