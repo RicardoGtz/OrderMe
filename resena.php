@@ -58,44 +58,6 @@ echo $usuario;
     }
   ?>
 <body>
-<<<<<<< HEAD
-<div class="contenedor">
-  <h1 class="courgete">Reseñas</h1>
-  <p></p>
-  <p class="centrado">A continuacion, se mostrarán las reseñas que los usuarios escriben sobre los platillos.</p>
-  <p></p>
-  <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Platillo</th>
-            <th>Usuario</th>
-            <th>Calificacion</th>
-            <th>Comentario</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-            $sqldata= mysqli_query($dbcon,"call VerResena()");
-
-            while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
-              echo "<tr><td>";
-              echo utf8_encode($row[2]);
-              echo "</td><td>";
-              echo utf8_encode($row[3]);
-              echo "</td><td>";
-              echo utf8_encode($row[4]);
-              echo "</td><td>";
-              echo utf8_encode($row[5]);
-              echo "</td>";
-            }
-          ?>
-        </tbody>
-      </table>
-  </div>
-  <?php include('includes/footer.html'); ?>
-</div>
-=======
     <!-- Encabezado -->
     <div class="col-lg-10 col-md-10 col-sm-10 mx-auto text-left espacio-arriba">
       <div class="row">
@@ -174,9 +136,9 @@ echo $usuario;
                     }
                   ?>
                 </tbody>
-              </table>  
+              </table>
         </div>
-    </div> 
+    </div>
     <!--- Footer -->
     <footer class="footer-bs">
         <div class="row">
@@ -236,7 +198,7 @@ echo $usuario;
                         <a href="#">
                             Instagram
                         </a>
-                    </li>      
+                    </li>
                 </ul>
             </div>
             <div class="col-md-3 footer-ns animated fadeInRight">
@@ -250,7 +212,6 @@ echo $usuario;
         </div>
     </footer>
     </div>
->>>>>>> 3577720442f3311110c92162ff11ef2d5e71b57c
 </body>
 </html>
 
@@ -418,7 +379,7 @@ echo $usuario;
             var8 = $('#r_var8').val();
             var9 = $('#r_var9').val();
             var10 = $('#r_var10').val();
-            
+
             // Comenzamos con la insercion:
             tabla = 'Usuarios';
             operacion = 'agregar';
@@ -435,7 +396,7 @@ echo $usuario;
             "&var9="+var9+
             "&var10="+var10;
 
-            alertify.success("Comienza el insert");   
+            alertify.success("Comienza el insert");
             if(var1 != "" &&
                 var2 != "" &&
                 var3 != "" &&
@@ -446,23 +407,23 @@ echo $usuario;
                 var8 != "" &&
                 var9 != "" &&
                 var10 != ""){
-                alertify.success("Comienza el insert");   
+                alertify.success("Comienza el insert");
                 agregar(cadena,tabla);
             }
             else
             {
-                
+
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |"; 
-                if(var2=="") cadena = cadena+"Nombre |"; 
-                if(var3=="") cadena = cadena+"Correo |"; 
-                if(var4=="") cadena = cadena+"Contraseña |"; 
-                if(var5=="") cadena = cadena+"Telefono |"; 
-                if(var6=="") cadena = cadena+"Numero de tarjeta |"; 
-                if(var7=="") cadena = cadena+"Mes de vencimiento |"; 
-                if(var8=="") cadena = cadena+"Año de vencimiento |"; 
-                if(var9=="") cadena = cadena+"CVV |"; 
-                if(var10=="") cadena = cadena+"Titular"; 
+                if(var1=="") cadena = cadena+"Usario |";
+                if(var2=="") cadena = cadena+"Nombre |";
+                if(var3=="") cadena = cadena+"Correo |";
+                if(var4=="") cadena = cadena+"Contraseña |";
+                if(var5=="") cadena = cadena+"Telefono |";
+                if(var6=="") cadena = cadena+"Numero de tarjeta |";
+                if(var7=="") cadena = cadena+"Mes de vencimiento |";
+                if(var8=="") cadena = cadena+"Año de vencimiento |";
+                if(var9=="") cadena = cadena+"CVV |";
+                if(var10=="") cadena = cadena+"Titular";
                 alertify.alert("Datos incompletos: ",cadena);
             }
             $('#r_var1').val("");
@@ -484,15 +445,15 @@ echo $usuario;
             cadena=
             "&var1="+var1+
             "&var2="+var2;
-            if(var1 != "" && var2 != ""){ 
-                //alertify.alert("Datos : ",cadena); 
+            if(var1 != "" && var2 != ""){
+                //alertify.alert("Datos : ",cadena);
                 login(cadena);
             }
             else
             {
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |";  
-                if(var2=="") cadena = cadena+"Contraseña |"; 
+                if(var1=="") cadena = cadena+"Usario |";
+                if(var2=="") cadena = cadena+"Contraseña |";
                 alertify.alert("Datos incompletos: ",cadena);
                 return false;
             }
@@ -501,4 +462,3 @@ echo $usuario;
         });
   });
 </script>
-
