@@ -45,31 +45,31 @@ echo $usuario;
         </meta>
   </head>
   <body>
-    <!-- Encabezado -->
-    <div class="col-lg-10 col-md-10 col-sm-10 mx-auto text-left espacio-arriba">
-      <div class="row">
-        <div class="col-md-4">
-          <h1 class="Font_Playball mediano_4 Verde_logo animated fadeIn">
-            Order Me
-          </h1>
-        </div>
-        <!-- Boton -->
-        <div id = "botones" class="col order-12 offset-md-1 offset-lg-5">
-        </div>
-      </div>
+        <!-- Encabezado -->
+        <div class="col-lg-10 col-md-10 col-sm-10 mx-auto text-left espacio-arriba">
+          <div class="row">
+            <div class="col-md-4">
+              <h1 class="Font_Playball mediano_4 Verde_logo animated fadeIn">
+                Order Me
+              </h1>
+            </div>
+            <!-- Boton -->
+            <div id = "botones" class="col order-12 offset-md-1 offset-lg-5">
+            </div>
+          </div>
 
-      <h2 class="Font_Raleway mediano animated fadeIn retraso-1 Gris espacio-abajo">
-        Ordena comida sin meseros (owo)/
-      </h2>
-      <label for="">
-      </label>
-    </div>
-    <!-- Menu -->
-    <div class="" id="menu">
-    </div>
-    <!-- Contenido -->
-    <div class="" id="contenido">
-    </div>
+          <h2 class="Font_Raleway mediano animated fadeIn retraso-1 Gris espacio-abajo">
+            Ordena comida sin meseros (owo)/
+          </h2>
+          <label for="">
+          </label>
+        </div>
+        <!-- Menu -->
+        <div class="" id="menu">
+        </div>
+        <!-- Contenido -->
+        <div class="" id="contenido">
+        </div>
   </body>
 </html>
 
