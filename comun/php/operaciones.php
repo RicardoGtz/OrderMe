@@ -39,7 +39,7 @@ switch ($tabla) {
                 break;
         }
         break;
-        case 'Empleado':
+    case 'Empleado':
         if($operacion!='eliminar' && $operacion!='iniciar')
         {
             $var1 = $_POST['var1'];
@@ -65,7 +65,21 @@ switch ($tabla) {
                 //$sql = "call e_eliminar_vt('$var1','$var2','$valor');";
                 break;
         }
-        break;
+    break;
+    case 'ciudad ':
+        $var1 = $_POST['var1'];
+        $var2 = $_POST['var2'];
+            switch ($operacion) {
+            case 'insert':
+                $sql  = "select InsertarCiudad('$var1','$var2') as resp";
+                break;
+            case 'update':
+                //sql = "select ActualizarEmpleado('$var1','$var1','$var2','$var3','$var4','$var5','$var6') as resp";
+                break;
+            case 'delete':
+                //$sql = "call e_eliminar_vt('$var1','$var2','$valor');";
+                break;
+    break;
 }
 
 $res=@mysqli_query($dbcon,$sql);
