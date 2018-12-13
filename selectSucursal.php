@@ -127,7 +127,7 @@ $id=@$_SESSION['usuario'];
         </div>
       </div>
   </div>
-    </div> 
+    </div>
     <!--- Footer -->
     <footer class="footer-bs">
       <div class="row">
@@ -187,7 +187,7 @@ $id=@$_SESSION['usuario'];
               <a href="#">
                 Instagram
               </a>
-            </li>      
+            </li>
           </ul>
         </div>
         <div class="col-md-3 footer-ns animated fadeInRight">
@@ -212,7 +212,7 @@ $id=@$_SESSION['usuario'];
 
     $('#menu_desplegable_1').load("includes/lista/lista.php",
     {columna:'estado',
-    sub_columna:'ciudad', 
+    sub_columna:'ciudad',
     sub_columna2:'restaurante',
     sub_columna3:'sucursal',
     variable:'var1',
@@ -284,25 +284,25 @@ $id=@$_SESSION['usuario'];
             "&var1="+var1+
             "&var2="+var2+
             "&var3="+var3+
-            "&var4="+var4; 
-             
+            "&var4="+var4;
+
             if(var1 != "" &&
                 var2 != "" &&
                 var3 != "" &&
                 var4 != "" ){
               alertify.success(var1 + "|" + var2 + "|" + var3 + "|" + var4);
-              alertify.confirm('Seleccionar sucursal', '¿Desea seleccionar esa sucursal?', function(){ window.location="ordenInsert.php";}
-               ,function(){ window.location="#";});   
+              alertify.confirm('Seleccionar sucursal', '¿Desea seleccionar esa sucursal?', function(){ window.location="ordenPedidos.php?id="+var4;}
+               ,function(){ window.location="#";});
             }
             else
-            {        
+            {
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |"; 
-                if(var2=="") cadena = cadena+"Nombre |"; 
-                if(var3=="") cadena = cadena+"Correo |"; 
-                if(var4=="") cadena = cadena+"Contraseña |"; 
+                if(var1=="") cadena = cadena+"Usario |";
+                if(var2=="") cadena = cadena+"Nombre |";
+                if(var3=="") cadena = cadena+"Correo |";
+                if(var4=="") cadena = cadena+"Contraseña |";
                 alertify.alert("Datos incompletos: ",cadena);
-            }          
+            }
         });
   });
 </script>
