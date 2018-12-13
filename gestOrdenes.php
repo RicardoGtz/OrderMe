@@ -35,20 +35,26 @@
                     <td>'.$raw[4].'</td>
                     <td>'.$raw[5].'</td>
                     <td>'.$raw[6].'</td>
-                    <td><button type="button" onclick="apruebaPlatillo()">Aprobar</button></td>
+                    <td><button id="aprobar" type="button" onclick="apruebaPlatillo()">Aprobar</button></td>
                     <td><button type="button" onclick="rechazaPlatillo()">Rechazar</button></td>
                   </tr>
                 </table>
               </div>
               <div align="center">
-              <button type="button" align="center" onclick="apruebaOrden()">Aprobar Órden!</button>
-              <button type="button" align="center" onclick="rechazaOrden()">Rechazar Órden!</button>
+              <form action="http://google.com">
+                  <input type="submit" value="Go to Google" />
+              </form>
+              <form action="http://yahoo.com">
+                  <input type="submit" value="Go to Google" />
+              </form>
             </div>
             <script>
+
               function apruebaPlatillo() {
-                alert("aprueba platillo alaverga");
+                  var algo = <?php aprobar_a(); ?>;
+                  console.log(algo);
               }
-              
+
             </script>';
     }
     echo $num.' resultados';
@@ -56,6 +62,10 @@
   }
   else {
     echo '<h1>No existen órdenes al momento</h1>';
+  }
+
+  function aprobar_a() {
+      return "si";
   }
   ?>
 <?php
