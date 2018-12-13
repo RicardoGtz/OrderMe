@@ -10,7 +10,9 @@
   require('connectmysql.php');
 	crearHeaders();
   $id=$_SESSION['usuario'];
+  //$id = "emp0001";
   echo $id;
+
 ?>
 <body>
   <?php
@@ -47,26 +49,18 @@
               <form action="http://yahoo.com">
                   <input type="submit" value="Go to Google" />
               </form>
-            </div>
-            <script>
-
-              function apruebaPlatillo() {
-                  var algo = <?php aprobar_a(); ?>;
-                  console.log(algo);
-              }
-
-            </script>';
+            </div>'
+            ;
     }
     echo $num.' resultados';
     mysqli_free_result($resultado);
+    mysqli_close($dbcon);
   }
   else {
     echo '<h1>No existen órdenes al momento</h1>';
   }
 
-  function aprobar_a() {
-      return "si";
-  }
+
   ?>
 <?php
 	include('includes/footer.html');
