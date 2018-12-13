@@ -117,7 +117,6 @@ echo $usuario;
                   <?php
                     include('../../connectmysql.php');
                     $sqldata= mysqli_query($dbcon,"call VerResena()");
-
                     while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
                       echo "<tr><td>";
                       echo utf8_encode($row[2]);
@@ -329,7 +328,6 @@ echo $usuario;
     tecla = String.fromCharCode(key).toString();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890";//Se define todo el abecedario que se quiere que se muestre.
     especiales = [8, 46, 6,9]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
-
     tecla_especial = false
     for(var i in especiales) {
         if(key == especiales[i]) {
@@ -337,7 +335,6 @@ echo $usuario;
             break;
         }
     }
-
     if(letras.indexOf(tecla) == -1 && !tecla_especial){
         return false;
     }
@@ -349,7 +346,6 @@ echo $usuario;
     tecla = String.fromCharCode(key).toString();
     letras = ".1234567890";//Se define todo el abecedario que se quiere que se muestre.
     especiales = [8, 46, 6,9]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
-
     tecla_especial = false
     for(var i in especiales) {
         if(key == especiales[i]) {
@@ -357,7 +353,6 @@ echo $usuario;
             break;
         }
     }
-
     if(letras.indexOf(tecla) == -1 && !tecla_especial){
         return false;
     }
@@ -379,7 +374,6 @@ echo $usuario;
             var8 = $('#r_var8').val();
             var9 = $('#r_var9').val();
             var10 = $('#r_var10').val();
-
             // Comenzamos con la insercion:
             tabla = 'Usuarios';
             operacion = 'agregar';
@@ -395,7 +389,6 @@ echo $usuario;
             "&var8="+var8+
             "&var9="+var9+
             "&var10="+var10;
-
             alertify.success("Comienza el insert");
             if(var1 != "" &&
                 var2 != "" &&
@@ -412,7 +405,6 @@ echo $usuario;
             }
             else
             {
-
                 cadena="Campos vacios = ";
                 if(var1=="") cadena = cadena+"Usario |";
                 if(var2=="") cadena = cadena+"Nombre |";
@@ -437,7 +429,6 @@ echo $usuario;
             $('#r_var9').val("");
             $('#r_var10').val("");
         });
-
         // Iniciar sesion:
         $('#iniciar').click(function() {
             var1 = $('#i_var1').val();
