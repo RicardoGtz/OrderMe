@@ -79,7 +79,7 @@ include('includes/global.php');
 </head>
 <body>
 	<div class="content">
-		<form action="ordenes.php" method="POST">
+		<form action="ordenPedidos.php" method="POST">
 		<table border="1px" cellpadding="5px" width="100%">
 			<thead class="cartHeader" display="off">
 				<tr>
