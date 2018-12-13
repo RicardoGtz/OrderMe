@@ -1,7 +1,8 @@
 <?php
 	function obtenerID($usu){
-		if(!session_id()) session_start();
-		$aux = 'nothing';
+		if(!session_id()) {
+		session_start();
+		$aux = 'nothing'; }
 		if(!isset($_SESSION['usuario'])) {
 			$_SESSION['usuario'] = $aux;
 		}
@@ -26,7 +27,7 @@
 		}
 		elseif (@$_SESSION['user']=='empleado'){
 			include('includes/headerEmpleado.php');
-			//echo "Hola Empleado";
+			echo "Hola Empleado";
 		}
 		elseif (@$_SESSION['user']=='cliente'){
 			include('includes/headerCliente.php');
