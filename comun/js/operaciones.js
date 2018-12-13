@@ -16,6 +16,25 @@ function agregar(cadena, t) {
     });
 }
 
+/// AGREGAR ///
+function actualizar_usuario(cadena, t) {
+    $.ajax({
+        type: "POST",
+        url: "comun/php/operaciones.php",
+        data: cadena,
+        success: function(r) {
+            alertify.success(r);
+            if(r==1){
+                alertify.alert("Muchas gracias!","Sus datos han sido actualizados en la base de datos!").set('onok', function(closeEvent){ window.location="perfilCliente.php";} );
+            }else if(r==2){
+                alertify.alert("Atencion!","El ID actualizado ya existe!");
+            }else if(r==0) {
+                alertify.alert("Muchas gracias!","Sus datos han sido actualizados en la base de datos!");
+            }
+        }
+    });
+}
+
 function login(cadena) {
     $.ajax({
         type: "POST",

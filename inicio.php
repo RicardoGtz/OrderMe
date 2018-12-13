@@ -2,19 +2,16 @@
 session_start();
 $usuario = @$_SESSION['user'];
 $id=@$_SESSION['usuario'];
-echo $usuario;
-echo $id;
-//echo $usuario;
 ?>
 
 <html>
-	<head>
+    <head>
         <meta charset="utf-8">
             <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
                 <title>
                     Order Me
                 </title>
-                	<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" rel="stylesheet">
+                    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" rel="stylesheet">
                     <link href="comun/librerias/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
                     <script crossorigin="anonymous" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js">
                     </script>
@@ -22,11 +19,11 @@ echo $id;
                     </script>
                     <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
                     </script>
-
+                    
                     <!-- Online -->
                     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Lobster|Raleway|Playball" rel="stylesheet"/>
                     <link href="comun/librerias/icon/css/font-awesome.min.css" rel="stylesheet">
-
+                        
                         <link href="comun/librerias/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css"/>
                         <link href="comun/librerias/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css"/>
                         <link href="comun/librerias/select2/css/select2.css" rel="stylesheet" type="text/css"/>
@@ -43,13 +40,13 @@ echo $id;
                         <script src="comun/librerias/select2/js/select2.js">
                         </script>
                     </link>
-                	</link>
+                    </link>
             </meta>
         </meta>
     </head>
-	<body>
+    <body>
         <div id="body"></div>
-	</body>
+    </body>
 </html>
 
 <!-- Cargar elementos -->
@@ -58,6 +55,14 @@ echo $id;
     $('#menu').load("includes/menu/menu.php");
     $('#botones').load("includes/botones/botones.php");
     $('#body').load("includes/body/body.php");
+
+    $('#menu_desplegable_1').load("includes/lista/lista.php",
+    {columna:'estado',
+    sub_columna:'ciudad', 
+    variable:'var4',
+    sub_variable:'var5',
+    etiqueta:'#menu_desplegable_2'});
+
   });
 </script>
 <!-- Modal para iniciar sesion-->
@@ -83,6 +88,24 @@ echo $id;
                     Contraseña:
                 </label>
                 <input tabindex="2" aria-describedby="basic-addon2" aria-label="Contraseña" class="form-control input-sm rounded" id="i_var2" maxlength="10" onkeypress="return soloLetras(event);" placeholder="Contraseña" required="" type="password"/>
+
+                <label>
+                    Estado
+                </label>
+                <div id="menu_desplegable_1">
+                    <select class="custom-select" id="var4">
+                        <option value="">Selecciona un estado</option>
+                    </select>
+                </div>
+                <label>
+                    Ciudad
+                </label>
+                <div id="menu_desplegable_2">
+                    <select class="custom-select" id="var5">
+                        <option value="">Selecciona un Estado primero</option>
+                    </select>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button tabindex="3" class="btn btn-info" data-dismiss="modal" id="iniciar" type="button">
@@ -215,7 +238,7 @@ echo $id;
             var8 = $('#r_var8').val();
             var9 = $('#r_var9').val();
             var10 = $('#r_var10').val();
-
+            
             // Comenzamos con la insercion:
             tabla = 'Usuarios';
             operacion = 'agregar';
@@ -232,7 +255,7 @@ echo $id;
             "&var9="+var9+
             "&var10="+var10;
 
-            alertify.success("Comienza el insert");
+            alertify.success("Comienza el insert");   
             if(var1 != "" &&
                 var2 != "" &&
                 var3 != "" &&
@@ -243,23 +266,23 @@ echo $id;
                 var8 != "" &&
                 var9 != "" &&
                 var10 != ""){
-                alertify.success("Comienza el insert");
+                alertify.success("Comienza el insert");   
                 agregar(cadena,tabla);
             }
             else
             {
-
+                
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |";
-                if(var2=="") cadena = cadena+"Nombre |";
-                if(var3=="") cadena = cadena+"Correo |";
-                if(var4=="") cadena = cadena+"Contraseña |";
-                if(var5=="") cadena = cadena+"Telefono |";
-                if(var6=="") cadena = cadena+"Numero de tarjeta |";
-                if(var7=="") cadena = cadena+"Mes de vencimiento |";
-                if(var8=="") cadena = cadena+"Año de vencimiento |";
-                if(var9=="") cadena = cadena+"CVV |";
-                if(var10=="") cadena = cadena+"Titular";
+                if(var1=="") cadena = cadena+"Usario |"; 
+                if(var2=="") cadena = cadena+"Nombre |"; 
+                if(var3=="") cadena = cadena+"Correo |"; 
+                if(var4=="") cadena = cadena+"Contraseña |"; 
+                if(var5=="") cadena = cadena+"Telefono |"; 
+                if(var6=="") cadena = cadena+"Numero de tarjeta |"; 
+                if(var7=="") cadena = cadena+"Mes de vencimiento |"; 
+                if(var8=="") cadena = cadena+"Año de vencimiento |"; 
+                if(var9=="") cadena = cadena+"CVV |"; 
+                if(var10=="") cadena = cadena+"Titular"; 
                 alertify.alert("Datos incompletos: ",cadena);
             }
             $('#r_var1').val("");
@@ -281,15 +304,15 @@ echo $id;
             cadena=
             "&var1="+var1+
             "&var2="+var2;
-            if(var1 != "" && var2 != ""){
-                //alertify.alert("Datos : ",cadena);
+            if(var1 != "" && var2 != ""){ 
+                //alertify.alert("Datos : ",cadena); 
                 login(cadena);
             }
             else
             {
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |";
-                if(var2=="") cadena = cadena+"Contraseña |";
+                if(var1=="") cadena = cadena+"Usario |";  
+                if(var2=="") cadena = cadena+"Contraseña |"; 
                 alertify.alert("Datos incompletos: ",cadena);
                 return false;
             }

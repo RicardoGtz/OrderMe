@@ -1,6 +1,6 @@
 <?php
   $id=$_SESSION['usuario'];
-  echo "$id";
+  //echo "$id";
 ?>
 <div class="Fondo_barnav sticky-top animated fadeIn retraso-2" id="menu">
             <nav class="navbar navbar-expand-lg navbar-light sticky-top Fondo_barnav">

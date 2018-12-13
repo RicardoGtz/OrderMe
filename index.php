@@ -1,7 +1,7 @@
 ﻿<?php
 session_start();
 $usuario = @$_SESSION['user'];
-echo $usuario;
+$id=@$_SESSION['usuario'];
 ?>
 
 <html>
