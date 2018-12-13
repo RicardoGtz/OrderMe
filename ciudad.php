@@ -48,8 +48,6 @@
         </thead>
         <tbody>
           <?php
-            include('connectmysql.php');
-
             $sqldata= mysqli_query($dbcon,"call VerCiudad()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){

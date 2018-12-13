@@ -26,11 +26,6 @@
   <h1 class="courgete">Reseñas</h1>
   <p></p>
   <p class="centrado">A continuacion, se mostrarán las reseñas que los usuarios escriben sobre los platillos.</p>
-    <?php
-      if (@$_SESSION['user'] == 'administradorG'){
-        echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='resenainsert.php'></div>";
-      }
-    ?>
   <p></p>
   <div class="table-responsive">
     <table class="table table-striped">
@@ -40,17 +35,10 @@
             <th>Usuario</th>
             <th>Calificacion</th>
             <th>Comentario</th>
-            <?php
-            if (@$_SESSION['user'] == 'administradorG'){
-              echo "<th>Editar</th>";
-              echo "<th>Eliminar</th>";
-            }
-            ?>
           </tr>
         </thead>
         <tbody>
           <?php
-            include('connectmysql.php');
             $sqldata= mysqli_query($dbcon,"call VerResena()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
@@ -63,11 +51,6 @@
               echo "</td><td>";
               echo utf8_encode($row[5]);
               echo "</td>";
-              if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='resenainsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
-                echo "<td><a href='resena.php?delete_id=$row[0]&usua=$row[1]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
-                echo "<tr>";
-              }
             }
           ?>
         </tbody>

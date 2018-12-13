@@ -326,7 +326,26 @@ delimiter $$
 create procedure VerCiudad()
 begin
  	Select * from Ciudad
-    order by pronvincia asc;
+    order by provincia asc;
+end$$
+
+-- call VerEstado()
+delimiter $$
+create procedure VerEstado()
+begin
+    Select provincia from Ciudad
+    order by provincia asc;
+end$$
+
+-- drop procedure VerCiudadEstado;
+-- call VerCiudadEstado
+delimiter $$
+create procedure VerCiudadEstado(in estado varchar(40))
+begin
+    Select nombre
+    from Ciudad
+    where provincia=estado
+    order by provincia asc;
 end$$
 
 -- call VerRestaurante();
@@ -427,6 +446,15 @@ begin
   	Select nombre, correo, telefono
   	from Empleado
   	where id_sucursal=sucursal
+  	Order by nombre;
+end$$
+
+delimiter $$
+create procedure VerEmpleadoEspecifico(in empleado varchar(7))
+begin
+  	Select *
+  	from Empleado
+  	where id_empleado=empleado
   	Order by nombre;
 end$$
 
