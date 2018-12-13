@@ -17,7 +17,7 @@
                             </a>
                         </li>
                         <li class="nav-item espacio-derecha_1 mx-auto">
-                            <a class="nav-link mediano Gris" href="ordenar.php">
+                            <a class="nav-link mediano Gris" href="selectsucursal.php">
                                 Ordenar
                             </a>
                         </li>
