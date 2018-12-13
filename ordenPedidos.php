@@ -29,14 +29,17 @@ include('includes/global.php');
 	//$idsucursal=$_GET['id'];
 	//echo $idsucursal;
 
-	if (isset($_POST['Confirmar'])) {
-		$idorden->generar();
-		$query=$con->query("select InsertarOrden('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
-		
-		$query2=$con->query("select id_orden from Orden where id_sucursal = '".$_SESSION['idsuc']."', fecha = '".getdate()."', num_mesa, total, estatus, id_usuario('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
-		
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		//$idorden->generar();
+		$query="select InsertarOrden('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')";
+		$res=@mysqli_query($dbcon,$query);
+		//select para idorden
+		$query2="select id_orden from Orden where id_sucursal = '".$_SESSION['idsuc']."', fecha = '".getdate()."', num_mesa = '9', total = '".$c['amount']."', estatus = 'Pendiente', id_usuario ='".$_SESSION['idsuc']."'";
+		$res2=@mysqli_query($dbcon,$query2);
+
 		foreach($_SESSION["cart"] as $c){
-		$q1 = $con->query("select InsertarPedido('".$idorden."','".$c['id_platillo']."','','Procesada')as resp");
+		$query3 = "select InsertarPedido('".$query2."','".$c['id_platillo']."','','Procesada')as resp";
+		$res3=@mysqli_query($dbcon,$query3);
 		}
 		unset($_SESSION["cart"]);
 		$res=@mysqli_query($dbcon,$query);
