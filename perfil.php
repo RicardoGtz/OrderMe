@@ -9,7 +9,6 @@
 	crearHeaders();
 ?>
 <body>
-<<<<<<< HEAD
   <div class="contenedor">
     <h1>Registrate</h1>
     <p></p>
@@ -114,7 +113,7 @@
             {
               echo '<h1>Atencion</h1>
                     <p>El registro que deseas modificar no existe!</p><p><br /></p>';
-=======
+                    ?>
 	<?php
 	include('connectmysql.php');
 
@@ -137,7 +136,6 @@
               	echo "<a href='platillo.php?id=$row[0]'>Ver Platillos";
 				echo '</td><tr>';
               	echo '</table></br>';
->>>>>>> origin/master
             }
           }
         // Cerrar la conexión a la base de datos

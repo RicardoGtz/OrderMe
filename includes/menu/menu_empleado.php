@@ -17,7 +17,7 @@
                             </a>
                         </li>
                         <li class="nav-item espacio-derecha_1 mx-auto">
-                            <a class="nav-link mediano Gris" href="perfil.php">
+                            <a class="nav-link mediano Gris" href="perfilEmpleado.php">
                                 Ver perfil
                             </a>
                         </li>
