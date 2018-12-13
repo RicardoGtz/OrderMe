@@ -31,7 +31,10 @@ include('includes/global.php');
 
 	if (isset($_POST['Confirmar'])) {
 		$idorden->generar();
-		$query=$con->query("select InsertarOrden('".$_SESSION['idsuc']."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
+		$query=$con->query("select InsertarOrden('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
+		
+		$query2=$con->query("select id_orden from Orden where id_sucursal = '".$_SESSION['idsuc']."', fecha = '".getdate()."', num_mesa, total, estatus, id_usuario('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
+		
 		foreach($_SESSION["cart"] as $c){
 		$q1 = $con->query("select InsertarPedido('".$idorden."','".$c['id_platillo']."','','Procesada')as resp");
 		}
@@ -79,7 +82,7 @@ include('includes/global.php');
 </head>
 <body>
 	<div class="content">
-		<form action="ordenPedidos.php" method="POST">
+		<!--<form action="ordenPedidos.php" method="POST">-->
 		<table border="1px" cellpadding="5px" width="100%">
 			<thead class="cartHeader" display="off">
 				<tr>
@@ -101,10 +104,12 @@ include('includes/global.php');
 					<th>Opcion</th>
 				</tr>
 				<?=$cart->get_items();?>
+				<form action="ordenPedidos.php" method="POST">
 				<th colspan="6"><input type="submit" value="Confirmar" class="btn btn-success btn-primary"></th>
+				</form>
 			</tbody>
 		</table>
-		</form>
+		
 		<br><br>
 		<table border="1px" cellpadding="5px" width="100%">
 			<thead class="productsHeader">
