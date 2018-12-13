@@ -7,7 +7,7 @@
 <?php
   error_reporting(0);
   include('connectmysql.php');
-  if(isset($_GET['delete_id']))//Si esta puesto el get entonces se ejecuta, dice delete id pero realmente puede llevar cualquier valor, solo es renombrar la variable abajo en el boton
+  if(isset($_GET['delete_id']))//Si esta puesto el get entonces se ejecutas, dice delete id pero realmente puede llevar cualquier valor, solo es renombrar la variable abajo en el boton
   {
     $ciu=$_GET['delete_id'];//le doy el valor de los GET a variables ya que si lo hacia directo habia problemas con las comillas (cosas raras),
     $pro=$_GET['provinc'];

@@ -22,7 +22,7 @@ function login(cadena) {
         url: "comun/php/login.php",
         data: cadena,
         success: function(r) {
-            window.location="index.php";
+            window.location="inicio.php";
         }
     });
 }
@@ -35,5 +35,3 @@ function cerrar_sesion() {
         }
     });
 }
-
-
