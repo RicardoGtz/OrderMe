@@ -28,11 +28,14 @@ include('includes/global.php');
 	}
 	//$idsucursal=$_GET['id'];
 	//echo $idsucursal;
-
+echo $_SESSION["cart"];
+	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$c=$_SESSION["cart"];
+		include ('connectmysql.php');
 		//$idorden->generar();
-		$query="select InsertarOrden('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')";
-		$res=@mysqli_query($dbcon,$query);
+		$query="select InsertarOrden('".$_SESSION['idsuc']."','".getdate()."','9','".$SESSION['cart']."','Pendiente','".$_SESSION['usuario']."'') as resp";
+		$res=@mysqli_query($dbcon,$query[0]);
 		//select para idorden
 		$query2="select id_orden from Orden where id_sucursal = '".$_SESSION['idsuc']."', fecha = '".getdate()."', num_mesa = '9', total = '".$c['amount']."', estatus = 'Pendiente', id_usuario ='".$_SESSION['idsuc']."'";
 		$res2=@mysqli_query($dbcon,$query2);
@@ -45,26 +48,26 @@ include('includes/global.php');
 		$res=@mysqli_query($dbcon,$query);
       	$row=mysqli_fetch_assoc($res);
 
-	    if($fila['resp']==1)
+	    if($row['resp']==1)
 	    {
 	      echo '<h1>Muchas gracias!</h1>
 	           <p>Sus datos han sido registrados en la base de datos!</p><p><br /></p>';
 	    }
 	    else
 	    {
-	      if($fila['resp']==-3)
+	      if($row['resp']==-3)
 	      {
 	        echo '<h1>Atencion</h1>
 	              <p>Error en las llaves foraneas</p><p><br /></p>';
 	      }
 
-	      if($fila['resp']==-2)
+	      if($row['resp']==-2)
 	      {
 	        echo '<h1>Atencion</h1>
 	              <p>La llave primaria a actualizar ya existe!</p><p><br /></p>';
 	      }
 
-	      if($fila['resp']==-1)
+	      if($row['resp']==-1)
 	      {
 	        echo '<h1>Atencion</h1>
 	              <p>El registro que deseas modificar no existe!</p><p><br /></p>';
