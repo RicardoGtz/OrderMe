@@ -10,7 +10,11 @@
     include('connectmysql.php');
 
     $id=@$_SESSION['usuario'];
+<<<<<<< HEAD
+    echo "El ID ".$id;
+=======
     
+>>>>>>> origin/master
 
 ?>
 <?php

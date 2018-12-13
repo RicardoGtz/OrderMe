@@ -430,6 +430,17 @@ begin
   	Order by nombre;
 end$$
 
+delimiter $$
+create procedure VerEmpleadoEspecifico(in empleado varchar(7))
+begin
+  	Select *
+  	from Empleado
+  	where id_empleado=empleado
+  	Order by nombre;
+end$$
+
+
+
 -- call VerUsuario();
 delimiter $$
 create procedure VerUsuario()
