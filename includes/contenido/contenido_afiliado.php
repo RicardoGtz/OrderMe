@@ -9,7 +9,7 @@
         <!-- Linea divisora -->
         <hr style="color: #0056b2;"/>
         <!-- Articulos -->
-        <div class="col-md-5 mx-auto quitar-float espacio-arriba espacio-abajo" id="tabla"></div>
+        <div class="col-lg-4 col-md-6 col-sm-6 mx-auto quitar-float espacio-arriba espacio-abajo" id="tabla"></div>
     </div> 
     <!--- Footer -->
     <footer class="footer-bs">

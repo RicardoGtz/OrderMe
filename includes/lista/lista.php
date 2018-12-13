@@ -39,15 +39,16 @@ switch ($columna) {
         ?>
         <option value=''>Selecciona un Estado</option>
         <?php
-        $sql = "call j_md_e();";
+        $sql = "call VerEstado();";
         break;
+
     default:
         ?>
         <option value=''>Seleccion</option>
         <?php
         break;
 }
-$result = mysqli_query($conexion, $dbcon);
+$result = mysqli_query($dbcon, $sql);
 while ($valores = mysqli_fetch_row($result)) {
     echo "<option value='$valores[0]'>$valores[0]</option>";  
 }
@@ -57,7 +58,7 @@ while ($valores = mysqli_fetch_row($result)) {
 
 <script >
     function sub_lista(id,sc,sv,se,x) {
-        //alertify.error(id);
+        alertify.error(id);
         $(se).load("includes/lista/sub_lista.php",
             {sub_valor:id,
              sub_columna:sc,

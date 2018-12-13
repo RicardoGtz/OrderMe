@@ -371,6 +371,14 @@ begin
   	where id_sucursal=sucursal;
 end$$
 
+delimiter $$
+create procedure VerOrdenPendiente(in usuario varchar(7))
+begin
+		Select Orden.id_orden, Orden.id_sucursal, Sucursal.nombre, Orden.fecha, Orden.num_mesa, Orden.total, Orden.estatus
+		from Orden join Sucursal
+		on Orden.id_sucursal=Sucursal.id_sucursal and Orden.id_usuario=usuario and estatus="Pendiente";
+end$$
+
 -- call VerPlatillo();
 delimiter $$
 create procedure VerPlatillo()

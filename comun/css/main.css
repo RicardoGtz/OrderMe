@@ -19,10 +19,12 @@ textarea {
     resize: vertical;
     max-width: 100%;
 }
+/*
 th {
     background-color: #6e492f;
     color: white;
 }
+*/
 .fa {
     color: white;
 }
