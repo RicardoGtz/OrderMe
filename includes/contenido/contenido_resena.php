@@ -5,11 +5,11 @@
     Reseñas
     </h2>
     <!-- Area 1 -->
-    <div class=" mx-auto Negro espacio-abajo">
+    <div class=" col-md-10 mx-auto Negro espacio-abajo">
         <!-- Linea divisora -->
         <hr style="color: #0056b2;"/>
         <!-- Articulos -->
-        <p class="mediano">A continuacion, se mostrarán las reseñas que los usuarios escriben sobre los platillos.</p>
+        <p class="mediano text-center">A continuacion, se mostrarán las reseñas que los usuarios escriben sobre los platillos.</p>
         <?php
           if (@$_SESSION['user'] == 'administradorG'){
             echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='resenainsert.php'></div>";
