@@ -54,7 +54,7 @@ echo $usuario;
     $pro=$_GET['provinc'];
     $sql_query="call EliminarCiudad('$ciu','$pro')";
     $r= @mysqli_query($dbcon,$sql_query);
-    header("Location: ciudad.php");
+    //header("Location: ciudad.php");
   }
 ?>
 <body>
