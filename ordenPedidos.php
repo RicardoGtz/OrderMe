@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('includes/global.php');
 	session_start();
     if (@$_SESSION['user']='cliente'){
@@ -7,7 +7,7 @@ include('includes/global.php');
     	if(isset($_GET['id'])){
     		$_SESSION['idsuc']=$_GET['id'];
     	}
-    	
+
     }
     else{
       header("Location:inicio.php");
@@ -29,16 +29,19 @@ include('includes/global.php');
 	//$idsucursal=$_GET['id'];
 	//echo $idsucursal;
 
-	if (isset($_POST['Confirmar'])) { 
+	if (isset($_POST['Confirmar'])) {
 		$idorden->generar();
-		$query=$con->query("select InsertarOrden('".$idorden."','".$_SESSION['idsuc']."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
+		$query=$con->query("select InsertarOrden('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
+		
+		$query2=$con->query("select id_orden from Orden where id_sucursal = '".$_SESSION['idsuc']."', fecha = '".getdate()."', num_mesa, total, estatus, id_usuario('".$_SESSION['idsuc']."','".getdate()."','9','".$c['amount']."','Pendiente','".$_SESSION['usuario']."'')");
+		
 		foreach($_SESSION["cart"] as $c){
 		$q1 = $con->query("select InsertarPedido('".$idorden."','".$c['id_platillo']."','','Procesada')as resp");
 		}
 		unset($_SESSION["cart"]);
 		$res=@mysqli_query($dbcon,$query);
       	$row=mysqli_fetch_assoc($res);
-	    
+
 	    if($fila['resp']==1)
 	    {
 	      echo '<h1>Muchas gracias!</h1>
@@ -62,8 +65,8 @@ include('includes/global.php');
 	      {
 	        echo '<h1>Atencion</h1>
 	              <p>El registro que deseas modificar no existe!</p><p><br /></p>';
-	      } 
-	    } 
+	      }
+	    }
 	  // Cerrar la conexión a la base de datos
 	    mysqli_close($dbcon);
 	  }
@@ -79,12 +82,12 @@ include('includes/global.php');
 </head>
 <body>
 	<div class="content">
-		<form action="ordenes.php" method="POST">
+		<!--<form action="ordenPedidos.php" method="POST">-->
 		<table border="1px" cellpadding="5px" width="100%">
 			<thead class="cartHeader" display="off">
 				<tr>
 					<th colspan="6">MI ORDEN</th>
-					
+
 				</tr>
 				<tr>
 					<th colspan="3">Total a pagar: <?=$cart->get_total_payment();?></th>
@@ -101,10 +104,12 @@ include('includes/global.php');
 					<th>Opcion</th>
 				</tr>
 				<?=$cart->get_items();?>
+				<form action="ordenPedidos.php" method="POST">
 				<th colspan="6"><input type="submit" value="Confirmar" class="btn btn-success btn-primary"></th>
+				</form>
 			</tbody>
 		</table>
-		</form>
+		
 		<br><br>
 		<table border="1px" cellpadding="5px" width="100%">
 			<thead class="productsHeader">
