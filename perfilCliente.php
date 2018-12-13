@@ -127,7 +127,7 @@
             $row=mysqli_fetch_array($sqldata,MYSQLI_NUM);
 
             echo '<form action="perfilCliente.php" method="POST">';
-            echo '<p>ID del Usuario:</p><input type="text" name="id_usuario" required maxlength="7" value="'.utf8_encode($row[0]).'"><br>';
+            echo '<p>ID del Usuario:</p><input type="text" name="id_usuario" required maxlength="7" value="'.utf8_encode($row[0]).'" readonly><br>';
             echo '<p>Nombre:</p><input type="text" name="nombre" required maxlength="40" value="'.utf8_encode($row[1]).'"><br>';
             echo '<p>Correo:</p><input type="text" name="correo" required maxlength="40" value="'.utf8_encode($row[2]).'"><br>';
             echo '<p>Contraseña:</p><input type="password" name="pass" required maxlength="10" value="'.utf8_encode($row[3]).'"><br>';
