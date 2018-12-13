@@ -25,9 +25,9 @@
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle nav-link mediano Gris" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administrar</a>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="tiene.php">Platillos</a>
+                              <a class="dropdown-item" href="tieneR.php">Platillos</a>
                               <a class="dropdown-item" href="orden.php">Orden</a>
-                              <a class="dropdown-item" href="pedido.php">Pedido</a>
+                              <a class="dropdown-item" href="gestOrdenes.php">Pedido</a>
                             </div>
                           </li>
                         </li>

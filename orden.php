@@ -18,13 +18,15 @@
 <?php
   include('includes/global.php');
   crearHeaders();
+	$id=$_SESSION['usuario'];
+  echo $id;
 ?>
 
 <body>
 <div class="contenedor">
   <h1 class="courgete">Ordenes</h1>
   <p></p>
-  <p class="centrado">A continuacion, se mostrarán todas las ordenes creadas para los distintos restaurantes y sucursales.</p>
+  <p class="centrado">A continuacion, se mostrarán todas las ordenes creadas para ésta sucursal.</p>
     <?php
       if (@$_SESSION['user'] == 'administradorG'){
         echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='ordinsert.php'></div>";
@@ -53,23 +55,24 @@
         <tbody>
           <?php
             include('connectmysql.php');
-            $sqldata= mysqli_query($dbcon,"call VerOrden()");
+						$query = "CALL getOrdenesSuc('".$id."');";
+            $sqldata= mysqli_query($dbcon,$query);
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
               echo "<tr><td>";
-              echo utf8_encode($row[0]);
+              echo $row[0];
               echo "</td><td>";
-              echo utf8_encode($row[1]);
+              echo $row[1];
               echo "</td><td>";
-              echo utf8_encode($row[2]);
+              echo $row[2];
               echo "</td><td>";
-              echo utf8_encode($row[3]);
+              echo $row[3];
               echo "</td><td>";
-              echo utf8_encode($row[4]);
+              echo $row[4];
               echo "</td><td>";
-              echo utf8_encode($row[5]);
+              echo $row[5];
               echo "</td><td>";
-              echo utf8_encode($row[6]);
+              echo $row[6];
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
                 echo "<td><a href='ordinsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";

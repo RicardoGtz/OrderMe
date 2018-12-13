@@ -14,28 +14,53 @@
 ?>
 <body>
   <?php
-  $query = "CALL verOrden();"; //Llamo al procedimiento almacenado para recuperar todo acerca de los platillos de un empleado que pertenece a una sucursal
+  $query = "CALL getPendientes('".$id."');"; //Llamo al procedimiento almacenado para recuperar todo acerca de los platillos de un empleado que pertenece a una sucursal
   $resultado= mysqli_query($dbcon,$query); //Ejecuto la consulta
-  $num = mysqli_num_rows($resultado); //Contar los resultados obtenidos
+  $num = mysqli_num_fields($resultado); //Contar los resultados obtenidos
   if($num > 0) {
-    while($row = mysqli_fetch_array($resultado, MYSQLI_NUM)) {
-      echo '<div align="center">
-            <h1>Órden: '.$row[0].'</h1>
-            <h2>Fecha: '.$row[2].' Mesa: '.$row[3].' Estatus: '.$row[5].'</h2>
-            <div align="center">
+    while($raw = mysqli_fetch_array($resultado, MYSQLI_NUM)) {
 
+      echo '
+        <h1 align="center">Orden: '.$raw[0].'</h1>
+        <h2>Fecha: '.$raw[1].' Mesa: '.$raw[2].' Estado: '.$raw[3].'</h2>
+                <table class="tabla" align="center">
+                  <tr>
+                    <th class="titulo">Nombre Platillo</th>
+                    <th class="titulo">Nota</th>
+                    <th class="titulo">Estatus</th>
+                    <th class="titulo"></th>
+                    <th class="titulo"></th>
+                  </tr>
+                  <tr>
+                    <td>'.$raw[4].'</td>
+                    <td>'.$raw[5].'</td>
+                    <td>'.$raw[6].'</td>
+                    <td><button type="button" onclick="apruebaPlatillo()">Aprobar</button></td>
+                    <td><button type="button" onclick="rechazaPlatillo()">Rechazar</button></td>
+                  </tr>
+                </table>
+              </div>
+              <div align="center">
+              <button type="button" align="center" onclick="apruebaOrden()">Aprobar Órden!</button>
+              <button type="button" align="center" onclick="rechazaOrden()">Rechazar Órden!</button>
             </div>
-            </div>';
+            <script>
+              function apruebaPlatillo() {
+                alert("aprueba platillo alaverga");
+              }
+              
+            </script>';
     }
+    echo $num.' resultados';
+    mysqli_free_result($resultado);
   }
   else {
     echo '<h1>No existen órdenes al momento</h1>';
   }
-  $query2 = ""
-  mysqli_close($dbcon);
   ?>
 <?php
 	include('includes/footer.html');
+    //mysqli_close($dbcon);
 ?>
 </body>
 </html>
