@@ -1,13 +1,12 @@
 <?php
 $id=$_REQUEST['id'];
-$res=$_REQUEST['res'];
 ?>
 
 <!-- Contenido -->
 <div class="animated fadeIn retraso-2 mx-auto">
     <!-- Texto -->
     <h2 class="Font_Raleway Dorado mediano_2 text-center mx-auto col-md-10 espacio-arriba">
-    Sucursales <?php echo $res;?>
+    Platillos
     </h2>
     <!-- Area 1 -->
     <div class=" mx-auto Negro espacio-abajo">
@@ -16,23 +15,22 @@ $res=$_REQUEST['res'];
         <!-- Articulos -->
         <div class="col-lg-4 col-md-6 col-sm-6 mx-auto quitar-float espacio-arriba espacio-abajo" id="tabla">
             <?php
-                include('../../connectmysql.php');
-                $sqldata= mysqli_query($dbcon,"call VerSucursalRestaurante('$id')");
+              include('../../connectmysql.php');
+                $sqldata= mysqli_query($dbcon,"call VerTieneSucursal('$id')");
 
-                while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
-                    echo '<table class="table ">';
-                    echo '<thead class="thead-dark"><tr><th colspan="4">'.$res.' '.utf8_encode($row[1]).'</th></tr></thead>';
-                    echo '<tr><th >Direccion:</th><td>'.utf8_encode($row[4]).'</td></tr>';
-                    echo '<tr><th>Ciudad/Estado:</th><td>'.utf8_encode($row[2]).', '.utf8_encode($row[3]).'</td>';
-                    echo '<th>Telefono:</th><td>'.utf8_encode($row[7]).'</td></tr>';
-                    echo '<tr><th>Hora de Apertura:</th><td>'.utf8_encode($row[5]).'</td>';
-                    echo '<th>Hora de Cierre:</th><td>'.utf8_encode($row[6]).'</td></tr>';
-                    echo '<tr><td colspan="4">';
-                    echo "<a href='platillos.php?id=$row[0]' class='btn btn-secondary ' role='button' aria-pressed='true'>Ver Platillos";
+                        while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
+                            echo '<table class="table">';
+                            echo '<thead class="thead-dark"><tr><th colspan="4" class="titulo">'.utf8_encode($row[1]).'</th></tr></thead>';
+                            echo '<tr><td rowspan="4"><img src="comun/img/platillo/'.utf8_encode($row[4]).'" widht="150px" height="150px"></td>';
+                            echo '<td>Nombre: '.utf8_encode($row[1]).'</td></tr>';
+                            echo '<tr><td>Descripcion: '.utf8_encode($row[2]).'</td></tr>';
+                            echo '<tr><td>Precio: $'.utf8_encode($row[3]).'</td></tr>';
+                            echo '<tr><td class="enca">';
+                            echo "<a href='resena.php?id=$row[0]' class='btn btn-secondary ' role='button' aria-pressed='true'>Ver Reseñas";
                     echo '</td><tr>';
-                    echo '</table></br>';
-                }
-            ?>
+                            echo '</table></br>';
+                        }
+              ?>
         </div>
     </div> 
     <!--- Footer -->

@@ -1,9 +1,10 @@
 <?php
 	include('../../connectmysql.php');
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-		$res=$_GET['p'];
+	//if(isset($_GET['id']))
+	//{
+		$id=$_REQUEST['id'];
+    $res=$_REQUEST['res'];
+
 		$sqldata= mysqli_query($dbcon,"call VerSucursalRestaurante('$id')");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){
@@ -19,5 +20,6 @@
 				echo '</td><tr>';
               	echo '</table></br>';
             }
-	}
+	//}
 	?>
+

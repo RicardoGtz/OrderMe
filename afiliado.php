@@ -44,7 +44,7 @@ echo $usuario;
         </meta>
         </meta>
   </head>
-  <body>s
+  <body>
     <!-- Encabezado -->
     <div class="col-lg-10 col-md-10 col-sm-10 mx-auto text-left espacio-arriba">
       <div class="row">
