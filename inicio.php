@@ -88,24 +88,6 @@ $id=@$_SESSION['usuario'];
                     Contraseña:
                 </label>
                 <input tabindex="2" aria-describedby="basic-addon2" aria-label="Contraseña" class="form-control input-sm rounded" id="i_var2" maxlength="10" onkeypress="return soloLetras(event);" placeholder="Contraseña" required="" type="password"/>
-
-                <label>
-                    Estado
-                </label>
-                <div id="menu_desplegable_1">
-                    <select class="custom-select" id="var4">
-                        <option value="">Selecciona un estado</option>
-                    </select>
-                </div>
-                <label>
-                    Ciudad
-                </label>
-                <div id="menu_desplegable_2">
-                    <select class="custom-select" id="var5">
-                        <option value="">Selecciona un Estado primero</option>
-                    </select>
-                </div>
-
             </div>
             <div class="modal-footer">
                 <button tabindex="3" class="btn btn-info" data-dismiss="modal" id="iniciar" type="button">

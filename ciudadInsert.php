@@ -72,13 +72,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		echo "$resp";
 		if($resp==1){
-			echo '<h1>Muchas gracias!</h1>
-			<p>Los datos han sido actualizados en la base de datos!</p><p><br /></p>';
+			//echo '<h1>Muchas gracias!</h1>
+			//<p>Los datos han sido actualizados en la base de datos!</p><p><br /></p>';
+			?>
+					<script>
+						alertify.alert("Muchas gracias!","Los datos han sido actualizados en la base de datos!").set('onok', function(closeEvent){ window.location="ciudad.php";} );
+					</script>
+					<?php 
 		}
 		else{
 			if($resp==2){
-				echo '<h1>Atencion</h1>
-				<p>El registro que intentas actualizar ya existe!</p><p><br /></p>';
+				//echo '<h1>Atencion</h1>
+				//<p>El registro que intentas actualizar ya existe!</p><p><br /></p>';
+				?>
+					<script>
+						alertsify.alert("Atencion!","El registro que intentas actualizar ya existe!");
+					</script>
+					<?php 
 			}
 		}
 	}
@@ -106,13 +116,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$resp=$row['resp'];
 
 			if($resp==1){
-				echo '<h1>Muchas gracias!</h1>
-				<p>Los datos han sido registrados en la base de datos!</p><p><br /></p>';
+				//echo '<h1>Muchas gracias!</h1>
+				//<p>Los datos han sido registrados en la base de datos!</p><p><br /></p>';
+				?>
+					<script>
+						alertify.alert("Muchas gracias!","Los datos han sido registrados en la base de datos!").set('onok', function(closeEvent){ window.location="ciudad.php";} );
+					</script>
+					<?php 
 			}
 			else{
 				if($resp==0){
-					echo '<h1>Atencion</h1>
-					<p>El registro ya existe!</p><p><br /></p>';
+					//echo '<h1>Atencion</h1>
+					//<p>El registro ya existe!</p><p><br /></p>';
+					?>
+					<script>
+						alertify.alert("Atencion!","El registro ya existe!");
+					</script>
+					<?php 
 				}
 			}
 		}
@@ -148,27 +168,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<div class="animated fadeIn retraso-2 mx-auto">
 			<!-- Texto -->
 			<h2 class="Font_Raleway Dorado mediano_2 text-center mx-auto col-md-10 espacio-arriba">
-				Datos de la cuenta
+				Ciudad
 			</h2>
 			<!-- Area 1 -->
-			<div class=" col-md-10 mx-auto Negro espacio-abajo">
+			<div class=" col-md-10 mx-auto Negro espacio-abajo text-center">
 				<!-- Linea divisora -->
 				<hr style="color: #0056b2;"/>
 				<!-- Articulos -->
 				<p class="mediano text-center">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema.</p>
 
 				<div class="col-lg-8 col-md-8 col-sm-8 mx-auto quitar-float espacio-arriba espacio-abajo text-left" id ="formulario">
-					<div class="modal-dialog modal-lg" role="document">
-        				<div class="modal-content">
+					<div class="modal-dialog modal-lg text-center" role="document">
+        				<div class="modal-content text-center">
 				            <div class="modal-body">
-								<label>
-									Insertar Ciudad
-								</label>
-								<div class="contenedor col-md-3 center-block fondoazul">
+								<div class="text-center">
 									<form action="ciudadInsert.php" method="POST">
-										<p>Nombre de ciudad:</p><input type="text" name="nombre" required maxlength="40" value="<?php if (isset($_GET['ciudad']))
+										<p>Nombre de ciudad:</p><input  class="form-control input-sm rounded" type="text" name="nombre" required maxlength="40" value="<?php if (isset($_GET['ciudad']))
 										echo $_GET['ciudad']; ?>"><br>
-										<p>Provincia (Estado):</p><input type="text" name="provincia" required maxlength="40" value="<?php if (isset($_GET['provincia']))
+										<p>Provincia (Estado):</p><input  class="form-control input-sm rounded" type="text" name="provincia" required maxlength="40" value="<?php if (isset($_GET['provincia']))
 										echo $_GET['provincia']; ?>"><br>
 										<input type="submit" value="Registrar" class="btn btn-success btn-primary">
 										<input type="hidden" name="ciudadAnt" maxlength="40" value="<?php if (isset($_GET['ciudad']))
@@ -257,6 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		</div>>
 	</body>
 	</html>
+
 	<!-- Cargar elementos -->
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -267,9 +285,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		});
 	</script>
 	<!-- VALIDACION DE ESCRITURA -->
-	<script>
-		function soloLetras(e) {
-			key = e.keyCode || e.which;
+<script>
+	function soloLetras(e) {
+		key = e.keyCode || e.which;
 			tecla = String.fromCharCode(key).toString();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890";//Se define todo el abecedario que se quiere que se muestre.
     especiales = [8, 46, 6,9]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
@@ -286,6 +304,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     	return false;
     }
 }
+
 </script>
 <script>
 	function soloNumeros(e) {
@@ -306,68 +325,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     	return false;
     }
 }
-</script>
-<!-- REALIZAR OPERACIONES -->
-<script type="text/javascript">
-	$(document).ready(function() {
-        // Registro:
-        $('#actualizar').click(function() {
-            // Obtenemos los datos del formulario
-            var1 = $('#r_var1').val();
-            var2 = $('#r_var2').val();
-            var3 = $('#r_var3').val();
-            var4 = $('#r_var4').val();
-            var5 = $('#r_var5').val();
-            var6 = $('#r_var6').val();
-            var7 = $('#r_var7').val();
-            var8 = $('#r_var8').val();
-            var9 = $('#r_var9').val();
-            var10 = $('#r_var10').val();
-
-            // Comenzamos con el update
-            tabla = 'Usuarios';
-            operacion = 'actualizar';
-            cadena="tabla="+tabla+
-            "&operacion="+operacion+
-            "&var1="+var1+
-            "&var2="+var2+
-            "&var3="+var3+
-            "&var4="+var4+
-            "&var5="+var5+
-            "&var6="+var6+
-            "&var7="+var7+
-            "&var8="+var8+
-            "&var9="+var9+
-            "&var10="+var10; 
-
-            if(var1 != "" &&
-            	var2 != "" &&
-            	var3 != "" &&
-            	var4 != "" &&
-            	var5 != "" &&
-            	var6 != "" &&
-            	var7 != "" &&
-            	var8 != "" &&
-            	var9 != "" &&
-            	var10 != ""){
-            	alertify.confirm('Actualizar cambios', '¿Desea guardar los cambios?', function(){ actualizar_usuario(cadena,tabla); }
-            		, function(){ window.location="perfilCliente.php";});   
-        }
-        else
-        {        
-        	cadena="Campos vacios = ";
-        	if(var1=="") cadena = cadena+"Usario |"; 
-        	if(var2=="") cadena = cadena+"Nombre |"; 
-        	if(var3=="") cadena = cadena+"Correo |"; 
-        	if(var4=="") cadena = cadena+"Contraseña |"; 
-        	if(var5=="") cadena = cadena+"Telefono |"; 
-        	if(var6=="") cadena = cadena+"Numero de tarjeta |"; 
-        	if(var7=="") cadena = cadena+"Mes de vencimiento |"; 
-        	if(var8=="") cadena = cadena+"Año de vencimiento |"; 
-        	if(var9=="") cadena = cadena+"CVV |"; 
-        	if(var10=="") cadena = cadena+"Titular"; 
-        	alertify.alert("Datos incompletos: ",cadena);
-        }          
-    });
-    });
 </script>
