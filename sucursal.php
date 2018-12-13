@@ -26,7 +26,7 @@
   <p></p>
   <p class="centrado">A continuacion, se mostrara el catalogo de las sucursales que pertenecen a cada restaurante.</p>
     <?php
-      if (@$_SESSION['user'] == 'administradorG'){
+      if ((@$_SESSION['user'] == 'administradorG') || (@$_SESSION['user'] == 'administradorR')){
         echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='sucursalInsert.php'></div>";
       }
     ?>
@@ -42,7 +42,7 @@
             <th>Telefono</th>
             <th>Restaurante</th>
             <?php
-            if (@$_SESSION['user'] == 'administradorG'){
+            if ((@$_SESSION['user'] == 'administradorG') || (@$_SESSION['user'] == 'administradorR')){
               echo "<th>Editar</th>";
               echo "<th>Eliminar</th>";
             }
@@ -54,7 +54,7 @@
             include('connectmysql.php');
             if($_SESSION['user']=='administradorG')
               $sqldata= mysqli_query($dbcon,"call VerSucursal()");
-            if($_SESSION['user']=='administradorL'){
+            if($_SESSION['user']=='administradorR'){
 							$id=$_SESSION['usuario'];
 							echo "$id";
 							$sqldata= mysqli_query($dbcon,"call VerSucursalRestauranteA('adm0001')");
@@ -74,8 +74,8 @@
               echo "</td><td>";
               echo utf8_encode($row[8]);
               echo "</td>";
-              if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='sucursalInsert.php?id=$row[0]&p=$row[1]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+              if ((@$_SESSION['user'] == 'administradorG') || (@$_SESSION['user'] == 'administradorR')){
+                echo "<td><a href='sucursalInsert.php?id=$row[0]&nombre=$row[1]&ciudad=$row[2]&provincia=$row[3]&direccion=$row[4]&apertura=$row[5]&cierre=$row[6]&telefono=$row[7]&restaurante=$row[8]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
                 echo "<td><a href='sucursal.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }

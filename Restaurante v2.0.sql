@@ -82,7 +82,7 @@ create table Resena(
 );
 
 create table Orden(
-	id_orden varchar(7),
+	id_orden int(7) auto_increment,
     id_sucursal varchar(7) not null,
     fecha date not null,
     num_mesa varchar(2) not null,
@@ -95,11 +95,12 @@ create table Orden(
 );
 
 create table Pedido(
-	id_orden varchar(7),
+	id_pedido int(7) auto_increment,
+	id_orden int(7),
     id_platillo varchar(7),
     nota varchar(200) not null,
     estatus varchar(20) not null,
-    constraint pk_pedido primary key (id_orden,id_platillo),
+    constraint pk_pedido primary key (id_pedido),
     constraint fk_orden foreign key (id_orden) references Orden(id_orden) on delete cascade on update cascade,
     constraint fk_platillo3 foreign key (id_platillo) references Platillo(id_platillo) on delete cascade on update cascade
 );
@@ -263,13 +264,13 @@ insert into Administrador (usuario, contrasena, correo, id_restaurante, telefono
             ("adm0004","root0004","josemiguel@gmail.com","res0004","1598364"),
             ("adm0005","root0005","andresgraciano@gmail.com","res0005","4024581");
 
-insert into Orden (id_orden, id_sucursal, fecha, num_mesa, total, estatus, id_usuario) values
-            ("ord0001","suc0006","2018-04-25","9",169.50,"Aprobada","usu0001"),
-            ("ord0002","suc0005","2018-04-26","9",70.50,"Aprobada","usu0001");
+insert into Orden (id_sucursal, fecha, num_mesa, total, estatus, id_usuario) values
+            ("suc0006","2018-04-25","9",169.50,"Aprobada","usu0001"),
+            ("suc0005","2018-04-26","9",70.50,"Aprobada","usu0001");
 
 insert into Pedido (id_orden, id_platillo, nota, estatus) values
-            ("ord0001","pla0004","Sin mucho picante","Aprobada"),
-            ("ord0001","pla0005","Sin mucho cinco","Aprobada");
+            ("1","pla0004","Sin mucho picante","Aprobada"),
+            ("1","pla0005","Sin mucho cinco","Aprobada");
 
 -- drop function RevisarLogin;
 delimiter $$
@@ -355,6 +356,25 @@ begin
   	Select * from Restaurante;
 end$$
 
+-- drop procedure VerRestauranteCiudad;
+-- call VerRestauranteCiudad("Ciudad Madero","Tamaulipas");
+delimiter $$
+create procedure VerRestauranteCiudad(in ciudad varchar(40), provincia varchar(40))
+begin
+  	Select Restaurante.id_restaurante, Restaurante.nombre 
+    from Restaurante join Sucursal
+    on Restaurante.id_restaurante=Sucursal.id_restaurante and (Sucursal.ciudad=ciudad and Sucursal.estado=provincia);
+end$$
+
+-- call VerSucursalCiudad("res0002","Ciudad Madero","Tamaulipas");
+delimiter $$
+create procedure VerSucursalCiudad(in restaurante varchar(7), ciudad varchar(40), provincia varchar(40))
+begin
+  	Select Sucursal.id_sucursal
+    from Sucursal
+    where Sucursal.id_restaurante=restaurante and (Sucursal.ciudad=ciudad and Sucursal.estado=provincia);
+end$$
+
 -- call VerSucursal();
 delimiter $$
 create procedure VerSucursal()
@@ -390,6 +410,7 @@ begin
   	where id_sucursal=sucursal;
 end$$
 
+
 delimiter $$
 create procedure VerOrdenPendiente(in usuario varchar(7))
 begin
@@ -410,6 +431,16 @@ delimiter $$
 create procedure VerTiene()
 begin
   	Select * from Tiene;
+end$$
+
+-- call VerTieneSucursal("suc0002");
+delimiter $$
+create procedure VerTieneRestaurante(in idAdmin varchar(7))
+begin
+  	Select Platillo.id_platillo, Platillo.nombre, Platillo.descripcion, Platillo.precio, Platillo.fotografia
+  	from Platillo join Tiene join Sucursal join Restaurante join Administrador
+  	on Platillo.id_platillo=Tiene.id_platillo and Tiene.id_sucursal=Sucursal.id_sucursal and Sucursal.id_restaurante=Restaurante.id_restaurante and Restaurante.id_restaurante=Administrador.id_restaurante and Administrador.usuario=idAdmin
+  	Order by Platillo.nombre;
 end$$
 
 -- call VerTieneSucursal("suc0002");
@@ -538,20 +569,20 @@ end$$
 
 -- call VerPedidoOrden("ord0001");
 delimiter $$
-create procedure VerPedidoOrden(in orden varchar(7))
+create procedure VerPedidoOrden(in orden int(7))
 begin
   	Select Pedido.id_orden, Pedido.id_platillo, Platillo.nombre, Pedido.nota, Pedido.estatus
   	from Pedido join Platillo
   	on Pedido.id_platillo=Platillo.id_platillo and Pedido.id_orden=orden;
 end$$
 
--- call VerPedidoEspecifico("ord0001","pla0001");
+-- call VerPedidoEspecifico("1");
 delimiter $$
-create procedure VerPedidoEspecifico(in orden varchar(7), platillo varchar(7))
+create procedure VerPedidoEspecifico(in pedido int(7))
 begin
   	Select id_orden, Platillo.nombre as nombrePlatillo, nota, estatus
   	from Pedido join Platillo
-  	on Pedido.id_platillo=Platillo.id_platillo and Pedido.id_orden=orden and Pedido.id_platillo=platillo;
+  	on Pedido.id_platillo=Platillo.id_platillo and Pedido.id_pedido=pedido;
 end$$
 
 -- call VerAdministrador();
@@ -630,16 +661,16 @@ end$$
 
 -- call EliminarOrden("ord1239");
 delimiter $$
-create procedure EliminarOrden(in orden varchar(7))
+create procedure EliminarOrden(in orden int(7))
 begin
 	Delete from Orden where id_orden=orden;
 end$$
 
 -- call EliminarPedido("ord1239","pla1234");
 delimiter $$
-create procedure EliminarPedido(in orden varchar(7), platillo varchar(7))
+create procedure EliminarPedido(in pedido int(7))
 begin
-	Delete from Pedido where id_orden=orden and id_platillo=platillo;
+	Delete from Pedido where id_pedido=pedido;
 end$$
 
 select * from Administrador;
@@ -800,22 +831,18 @@ end$$
 -- select InsertarOrden("ord1239","res1235","9",169.50,"Aprobada","usu1235");
 -- select * from Orden;
 delimiter $$
-create function InsertarOrden(orden varchar(7), sucurO varchar(7), fechaO date, mesa varchar(2), total float(5,2), estatus varchar(10), usuario varchar(7)) returns varchar(4)
+create function InsertarOrden(sucurO varchar(7), fechaO date, mesa varchar(2), total float(5,2), estatus varchar(10), usuario varchar(7)) returns varchar(4)
 begin
 	declare respuesta varchar(4);
-    if not exists(select * from Orden where id_orden=orden) then
-		if exists(select * from Sucursal where id_sucursal=sucurO) then
-			if exists(select * from Usuario where id_usuario=usuario) then
-				insert into Orden values(orden, sucurO, fechaO, mesa, total, estatus, usuario);
-				set respuesta=1; -- Insercion exitosa en Orden
-            else
-             set respuesta=2; -- No existe ese Usuario
-			end if;
-        else
-		 set respuesta=3; -- No existe esa Sucursal
+	if exists(select * from Sucursal where id_sucursal=sucurO) then
+		if exists(select * from Usuario where id_usuario=usuario) then
+			insert into Orden (id_sucursal, fecha, num_mesa, total, estatus, id_usuario) values(sucurO, fechaO, mesa, total, estatus, usuario);
+			set respuesta=1; -- Insercion exitosa en Orden
+		else
+		 set respuesta=2; -- No existe ese Usuario
 		end if;
 	else
-		set respuesta=0; -- Ya existe esa Orden
+	 set respuesta=3; -- No existe esa Sucursal
 	end if;
     return respuesta;
 end$$
@@ -824,22 +851,18 @@ end$$
 -- select InsertarPedido("ord1239","pla1234","Sin apio porque wacala de perro","Procesada");
 -- select * from Pedido;
 delimiter $$
-create function InsertarPedido(orden varchar(7), platillo varchar(7), notaP varchar(200), estatusP varchar(20)) returns varchar(4)
+create function InsertarPedido(orden int(7), platillo varchar(7), notaP varchar(200), estatusP varchar(20)) returns varchar(4)
 begin
 	declare respuesta varchar(4);
-	if not exists(select * from Pedido where id_orden=orden and id_platillo=platillo) then
-		if exists(select * from Orden where id_orden=orden) then
-			if exists(select * from Platillo where id_platillo=platillo) then
-				insert into Pedido values(orden, platillo, notaP, estatusP);
-				set respuesta=1; -- Insercion exitosa en Pedido
-			else
-				set respuesta=2; -- No existe ese Platillo
-			end if;
+	if exists(select * from Orden where id_orden=orden) then
+		if exists(select * from Platillo where id_platillo=platillo) then
+			insert into Pedido (id_orden, id_platillo, nota, estatus) values(orden, platillo, notaP, estatusP);
+			set respuesta=1; -- Insercion exitosa en Pedido
 		else
-			set respuesta=3; -- No existe esa orden
+			set respuesta=2; -- No existe ese Platillo
 		end if;
 	else
-		set respuesta=0; -- Ya existe esa combinacion de Orden y Platillo
+		set respuesta=3; -- No existe esa orden
 	end if;
     return respuesta;
 end$$
@@ -1083,7 +1106,7 @@ end$$
 
 -- drop function ActualizarOrden
 delimiter $$
-create function ActualizarOrden(orden varchar(7), ordenAct varchar(7), sucurAct varchar(7), fechaAct date, mesaAct varchar(2),
+create function ActualizarOrden(orden int(7), ordenAct int(7), sucurAct varchar(7), fechaAct date, mesaAct varchar(2),
 								totalAct float(5,2), estatusAct varchar(10), usuarioAct varchar(7)) returns varchar(4)
 begin
   	declare respuesta varchar(4);
@@ -1117,19 +1140,20 @@ end$$
 
 --
 delimiter $$
-create function ActualizarPedido(orden varchar(7), platillo varchar(7), ordenAct varchar(7), platiAct varchar(7),
+create function ActualizarPedido(pedido int(7), pedidoAct int(7), ordenAct int(7), platiAct varchar(7),
 								 notaAct varchar(200), estatusAct varchar(20)) returns varchar(4)
 begin
   	declare respuesta varchar(4);
-  	if exists(select * from Pedido where Pedido.id_orden=orden and Pedido.id_platillo=platillo) then
-  		if((orden=ordenAct and platillo=platiAct) or not exists(select * from Pedido where Pedido.id_orden=ordenAct and Pedido.id_platillo=platiAct)) then
+  	if exists(select * from Pedido where Pedido.id_pedido=pedido) then
+  		if((pedido=pedidoAct) or not exists(select * from Pedido where Pedido.id_orden=ordenAct and Pedido.id_platillo=platiAct)) then
   			if exists(select * from Orden where Orden.id_orden=ordenAct) then
   				if exists(select * from Platillo where Platillo.id_platillo=platiAct) then
-  					update Pedido set Pedido.id_orden=ordenAct,
+  					update Pedido set Pedido.id_pedido=pedidoAct,
+									  Pedido.id_orden=ordenAct,
   									  Pedido.id_platillo=platiAct,
   									  Pedido.nota=notaAct,
   									  Pedido.estatus=estatusAct
-  					where Pedido.id_orden=orden and Pedido.id_platillo=platillo;
+  					where Pedido.id_pedido=pedido;
   					set respuesta=1; -- Actualizacion Exitosa en Restaurante
   				else
   					set respuesta=2;

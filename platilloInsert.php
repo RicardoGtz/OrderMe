@@ -73,12 +73,18 @@
 		<p class="centrado">Por favor asegurate de llenar todos los campos del formulario para poder agregar la informacion al sistema</p>
 		<div class="contenedor col-md-3 center-block fondoazul">
 			<form action="platilloInsert.php" method="POST" enctype="multipart/form-data">
-        <p>ID del Platillo:</p><input type="text" name="id_platillo" required maxlength="7" value=""><br>
-        <p>Nombre del Platillo:</p><input type="text" name="nombre" required maxlength="40" value=""><br>
-        <p>Descripción:</p><input type="text" name="descripcion" required maxlength="200" value=""><br>
-        <p>Precio: $</p><input type="number" name="precio" step="0.01" required pattern="[0-9]{1,5}\.[0-9]{1,2}$|[0-9]{1,5}$" maxlength="99999.99" minlength="0" value=""><br>
+        <p>ID del Platillo:</p><input type="text" name="id_platillo" required maxlength="7" value="<?php if (isset($_GET['id']))
+	         echo $_GET['id']; ?>"><br>
+        <p>Nombre del Platillo:</p><input type="text" name="nombre" required maxlength="40" value="<?php if (isset($_GET['nombre']))
+	         echo $_GET['nombre']; ?>"><br>
+        <p>Descripción:</p><input type="text" name="descripcion" required maxlength="200" value="<?php if (isset($_GET['desc']))
+	         echo $_GET['desc']; ?>"><br>
+        <p>Precio: $</p><input type="number" name="precio" step="0.01" required pattern="[0-9]{1,5}\.[0-9]{1,2}$|[0-9]{1,5}$" maxlength="99999.99" minlength="0" value="<?php if (isset($_GET['precio']))
+	         echo $_GET['precio']; ?>"><br>
         <p>Fotografia:</p><input type="file" name="fotografia" required><br>
 				<input type="submit" value="Registrar" class="btn btn-success btn-primary">
+				<input type="hidden" name="platilloAnt" maxlength="40" value="<?php if (isset($_GET['id']))
+	         echo $_GET['id']; ?>">
 			</form>
 		</div>
 	<p></p>

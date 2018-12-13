@@ -27,7 +27,7 @@
   <p></p>
   <p class="centrado">A continuacion, se mostraran las relaciones de Sucursal/Platillo con las que cuenta cada restaurante.</p>
     <?php
-      if (@$_SESSION['user'] == 'administradorG'){
+      if ((@$_SESSION['user'] == 'administradorG') || (@$_SESSION['user'] == 'administradorR')){
         echo "<div class='centrado'><input class='boto' type='button' name='insert' value='Insertar' onclick=location.href='tieneinsert.php'></div>";
       }
     ?>
@@ -39,7 +39,7 @@
             <th>Platillo</th>
             <th>Sucursal</th>
             <?php
-            if (@$_SESSION['user'] == 'administradorG'){
+            if ((@$_SESSION['user'] == 'administradorG') || (@$_SESSION['user'] == 'administradorR')){
               echo "<th>Editar</th>";
               echo "<th>Eliminar</th>";
             }
@@ -49,6 +49,13 @@
         <tbody>
           <?php
             include('connectmysql.php');
+						if($_SESSION['user']=='administradorG')
+              $sqldata= mysqli_query($dbcon,"call VerTiene()");
+            if($_SESSION['user']=='administradorR'){
+							$id=$_SESSION['usuario'];
+							echo "$id";
+							$sqldata= mysqli_query($dbcon,"call VerSucursalRestauranteA('adm0001')");
+						}
             $sqldata= mysqli_query($dbcon,"call VerTiene()");
 
             while($row=mysqli_fetch_array($sqldata,MYSQLI_NUM)){

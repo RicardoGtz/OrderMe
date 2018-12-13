@@ -33,7 +33,6 @@
 			$row=mysqli_fetch_assoc($res);
 			$resp=$row['resp'];
 
-			echo "$resp";
 			if($resp==1){
 				echo '<h1>Muchas gracias!</h1>
 					<p>Los datos han sido actualizados en la base de datos!</p><p><br /></p>';
@@ -80,7 +79,7 @@
 				}
 		}
 
-		}
+	}
 		mysqli_close($dbcon);
 	}// Fin de acciones cuando se envía el formulario
 ?>

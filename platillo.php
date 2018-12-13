@@ -66,7 +66,7 @@
               echo utf8_encode($row[4]);
               echo "</td>";
               if (@$_SESSION['user'] == 'administradorG'){
-                echo "<td><a href='plainsert.php?id=$row[0]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
+                echo "<td><a href='platilloInsert.php?id=$row[0]&nombre=$row[1]&desc=$row[2]&precio=$row[3]'><img src='comun/img/sistema/act2.png' class='img-rounded'></td>";
                 echo "<td><a href='platillo.php?delete_id=$row[0]' onclick='return confirm('sure to delete !');'><img src='comun/img/sistema/eli2.png' alt='Delete' class='img-rounded'/></a></td>";
                 echo "<tr>";
               }
