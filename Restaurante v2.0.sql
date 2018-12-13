@@ -458,6 +458,11 @@ begin
   	Order by nombre;
 end$$
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3577720442f3311110c92162ff11ef2d5e71b57c
 -- call VerUsuario();
 delimiter $$
 create procedure VerUsuario()
