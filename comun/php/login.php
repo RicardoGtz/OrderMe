@@ -12,23 +12,23 @@ $row=mysqli_fetch_assoc($res);
 switch ($row['resp']) {
 	case 'administradorG':
 	$_SESSION['user']='administradorG';
-	//obtenerID($id);
+	$_SESSION['usuario'] = $var1;
 	break;
 	case 'administradorR':
 	$_SESSION['user']='administradorR';
-	//obtenerID($id);
+	$_SESSION['usuario'] = $var1;
 	break;
 	case 'cliente':
 	$_SESSION['user']='cliente';
-	//obtenerID($id);
+	$_SESSION['usuario'] = $var1;
 	break;
 	case 'empleado':
 	$_SESSION['user']='empleado';
-	//obtenerID($id);
+	$_SESSION['usuario'] = $var1;
 	break;
 	default:
 	$id="";
 	break;
 }
 mysqli_close($dbcon);
-echo $_SESSION['user'];
+?>

@@ -7,7 +7,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav text-center mx-auto col-md-10">
                         <li class="nav-item espacio-derecha_1 mx-auto">
-                            <a class="nav-link mediano Gris active" href="index.php">
+                            <a class="nav-link mediano Gris active" href="inicio.php">
                                 Inicio
                             </a>
                         </li>
@@ -27,7 +27,7 @@
 				<a class="dropdown-item" href="tiene.php">Tiene</a>
 				<a class="dropdown-item" href="empleado.php">Empleado</a>
 				<a class="dropdown-item" href="usuario.php">Usuario</a>
-				<a class="dropdown-item" href="resena.php">Reseña</a>
+				<a class="dropdown-item" href="resena.php">Reseï¿½a</a>
 				<a class="dropdown-item" href="orden.php">Orden</a>
 				<a class="dropdown-item" href="pedido.php">Pedido</a>
 				<a class="dropdown-item" href="administrador.php">Administrador</a>

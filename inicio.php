@@ -1,6 +1,9 @@
 ﻿<?php
 session_start();
 $usuario = @$_SESSION['user'];
+$id=@$_SESSION['usuario'];
+echo $usuario;
+echo $id;
 //echo $usuario;
 ?>
 
@@ -19,11 +22,11 @@ $usuario = @$_SESSION['user'];
                     </script>
                     <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
                     </script>
-                    
+
                     <!-- Online -->
                     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Lobster|Raleway|Playball" rel="stylesheet"/>
                     <link href="comun/librerias/icon/css/font-awesome.min.css" rel="stylesheet">
-                        
+
                         <link href="comun/librerias/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css"/>
                         <link href="comun/librerias/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css"/>
                         <link href="comun/librerias/select2/css/select2.css" rel="stylesheet" type="text/css"/>
@@ -212,7 +215,7 @@ $usuario = @$_SESSION['user'];
             var8 = $('#r_var8').val();
             var9 = $('#r_var9').val();
             var10 = $('#r_var10').val();
-            
+
             // Comenzamos con la insercion:
             tabla = 'Usuarios';
             operacion = 'agregar';
@@ -229,7 +232,7 @@ $usuario = @$_SESSION['user'];
             "&var9="+var9+
             "&var10="+var10;
 
-            alertify.success("Comienza el insert");   
+            alertify.success("Comienza el insert");
             if(var1 != "" &&
                 var2 != "" &&
                 var3 != "" &&
@@ -240,23 +243,23 @@ $usuario = @$_SESSION['user'];
                 var8 != "" &&
                 var9 != "" &&
                 var10 != ""){
-                alertify.success("Comienza el insert");   
+                alertify.success("Comienza el insert");
                 agregar(cadena,tabla);
             }
             else
             {
-                
+
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |"; 
-                if(var2=="") cadena = cadena+"Nombre |"; 
-                if(var3=="") cadena = cadena+"Correo |"; 
-                if(var4=="") cadena = cadena+"Contraseña |"; 
-                if(var5=="") cadena = cadena+"Telefono |"; 
-                if(var6=="") cadena = cadena+"Numero de tarjeta |"; 
-                if(var7=="") cadena = cadena+"Mes de vencimiento |"; 
-                if(var8=="") cadena = cadena+"Año de vencimiento |"; 
-                if(var9=="") cadena = cadena+"CVV |"; 
-                if(var10=="") cadena = cadena+"Titular"; 
+                if(var1=="") cadena = cadena+"Usario |";
+                if(var2=="") cadena = cadena+"Nombre |";
+                if(var3=="") cadena = cadena+"Correo |";
+                if(var4=="") cadena = cadena+"Contraseña |";
+                if(var5=="") cadena = cadena+"Telefono |";
+                if(var6=="") cadena = cadena+"Numero de tarjeta |";
+                if(var7=="") cadena = cadena+"Mes de vencimiento |";
+                if(var8=="") cadena = cadena+"Año de vencimiento |";
+                if(var9=="") cadena = cadena+"CVV |";
+                if(var10=="") cadena = cadena+"Titular";
                 alertify.alert("Datos incompletos: ",cadena);
             }
             $('#r_var1').val("");
@@ -278,15 +281,15 @@ $usuario = @$_SESSION['user'];
             cadena=
             "&var1="+var1+
             "&var2="+var2;
-            if(var1 != "" && var2 != ""){ 
-                //alertify.alert("Datos : ",cadena); 
+            if(var1 != "" && var2 != ""){
+                //alertify.alert("Datos : ",cadena);
                 login(cadena);
             }
             else
             {
                 cadena="Campos vacios = ";
-                if(var1=="") cadena = cadena+"Usario |";  
-                if(var2=="") cadena = cadena+"Contraseña |"; 
+                if(var1=="") cadena = cadena+"Usario |";
+                if(var2=="") cadena = cadena+"Contraseña |";
                 alertify.alert("Datos incompletos: ",cadena);
                 return false;
             }
