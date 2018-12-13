@@ -10,7 +10,7 @@ switch ($usuario) {
         include("body_local.php");
     break;
     case 'empleado':
-        include("body_cliente.php");
+        include("body_empleado.php");
     break;
     case 'cliente':
         include("body_cliente.php");

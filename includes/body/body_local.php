@@ -1,3 +1,7 @@
+<?php
+$usuario = @$_SESSION['user'];
+$id=@$_SESSION['usuario'];
+?>
 <body>
 		<!-- Encabezado -->
         <div class="col-lg-10 col-md-10 col-sm-10 mx-auto text-left animated fadeIn espacio-arriba">
@@ -25,7 +29,7 @@
         <div class="animated fadeIn retraso-2 mx-auto">
            <!-- Texto -->
             <h2 class="Font_Raleway Dorado mediano_2 text-center mx-auto col-md-10 espacio-arriba">
-                Nuestros servicios
+                Bienvenido: <?php echo $id; ?>
             </h2>
             <!-- Area 1 -->
             <div class=" mx-auto Negro">
